@@ -48,7 +48,7 @@
         <div class="layout-container">
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                  <a href="index.html" class="app-brand-link">
+                  <a href="{{route('dashboard')}}" class="app-brand-link">
                     <span class="app-brand-logo demo">
                       
                     </span>
@@ -67,6 +67,11 @@
       
                 <ul class="menu-inner py-1">
                   <!-- Dashboards -->
+                  <li class="menu-item">
+                    <a href="{{route('dashboard')}}" class="menu-link ">
+                      <div class="text-truncate" data-i18n="Layouts">Dashboard</div>
+                    </a>
+                  </li>
                   <li class="menu-item active open">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-home-smile"></i>
@@ -75,15 +80,14 @@
                     </a>
                     <ul class="menu-sub">
                       <li class="menu-item active">
-                        <a href="{{route('dashboard')}}" class="menu-link">
+                        <a href="{{route('admin.pengumuman.index')}}" class="menu-link">
                           <div class="text-truncate" data-i18n="Analytics"> Data Pengumuman</div>
                         </a>
                       </li>
                       <li class="menu-item">
                         <a
                           href="{{route('admin.pengumuman.create')}}"
-                          target="_blank"
-                          class="menu-link">
+                          class="menu-link"> 
                           <div class="text-truncate" data-i18n="CRM">Buat Pengumuman</div>
                         </a>
                       </li>
@@ -91,6 +95,8 @@
                   </li>
       
                   <!-- Layouts -->
+                  
+                  
                   <li class="menu-item">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -122,7 +128,7 @@
                         <a
                           href="{{route('admin.inventaris.index')}}"
                           class="menu-link"
-                          target="_blank">
+                          >
                           <div class="text-truncate" data-i18n="Landing">Data Inventaris Barang</div>
                         </a>
                       </li>
@@ -130,7 +136,7 @@
                         <a
                           href="{{route('admin.inventaris.create')}}"
                           class="menu-link"
-                          target="_blank">
+                          >
                           <div class="text-truncate" data-i18n="Pricing">Tambah Barang</div>
                         </a>
                       </li>
@@ -146,7 +152,7 @@
                         <a
                           href="{{route('admin.acara.index')}}"
                           class="menu-link"
-                          target="_blank">
+                          >
                           <div class="text-truncate" data-i18n="Landing">Data Acara & Absensi</div>
                         </a>
                       </li>
@@ -154,7 +160,7 @@
                         <a
                           href="{{route('admin.acara.create')}}"
                           class="menu-link"
-                          target="_blank">
+                          >
                           <div class="text-truncate" data-i18n="Pricing">Tambah Acara</div>
                         </a>
                       </li>
@@ -170,7 +176,7 @@
                         <a
                           href="{{route('admin.peminjaman.index')}}"
                           class="menu-link"
-                          target="_blank">
+                          >
                           <div class="text-truncate" data-i18n="Landing">Data Peminjaman Barang</div>
                         </a>
                       </li>
@@ -178,7 +184,7 @@
                         <a
                           href="{{route('admin.peminjaman.create')}}"
                           class="menu-link"
-                          target="_blank">
+                          >
                           <div class="text-truncate" data-i18n="Pricing">Tambah Peminjaman Barang</div>
                         </a>
                       </li>
@@ -291,14 +297,14 @@
 
                         <!-- User -->
                         <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                        <a
+                        {{-- <a
                             class="nav-link dropdown-toggle hide-arrow p-0"
                             href="javascript:void(0);"
                             data-bs-toggle="dropdown">
                             <div class="avatar avatar-online">
                             <img src="../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
-                        </a>
+                        </a> --}}
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li>
                             <a class="dropdown-item" href="#">

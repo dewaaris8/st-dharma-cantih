@@ -9,12 +9,10 @@
             <div class="d-flex align-items-start row">
               <div class="col-sm-7">
                 <div class="card-body">
-                  <h5 class="card-title text-primary mb-3">Congratulations John! 🎉</h5>
+                  <h5 class="card-title text-primary mb-3">Welcome Admin 🎉</h5>
                   <p class="mb-6">
-                    You have done 72% more sales today.<br />Check your new badge in your profile.
+                    Lihat semua data <br />ST Dharma Cantih disini.
                   </p>
-
-                  <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
                 </div>
               </div>
               <div class="col-sm-5 text-center text-sm-left">
@@ -97,7 +95,7 @@
           </div>
         </div>
         <!-- Total Revenue -->
-        <div class="col-12 col-xxl-8 order-2 order-md-3 order-xxl-2 mb-6 total-revenue">
+        {{-- <div class="col-12 col-xxl-8 order-2 order-md-3 order-xxl-2 mb-6 total-revenue">
           <div class="card">
             <div class="card-header flex w-full justify-between">
                 <h5 class="m-0">Daftar Pengumuman</h5>
@@ -134,8 +132,8 @@
                     </table>
                 </div>
             </div>
-        </div>
-        </div>
+          </div>
+        </div> --}}
         <!--/ Total Revenue -->
         <div class="col-12 col-md-8 col-lg-12 col-xxl-4 order-3 order-md-2 profile-report">
           <div class="row">
@@ -230,49 +228,6 @@
     <!-- / Content -->
 
     <!-- Footer -->
-    <footer class="content-footer footer bg-footer-theme">
-      <div class="container-xxl">
-        <div
-          class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
-          <div class="mb-2 mb-md-0">
-            ©
-            <script>
-              document.write(new Date().getFullYear());
-            </script>
-            , made with ❤️ by
-            <a href="https://themeselection.com" target="_blank" class="footer-link">ThemeSelection</a>
-          </div>
-          <div class="d-none d-lg-inline-block">
-            <a
-              href="https://themeselection.com/item/category/admin-templates/"
-              target="_blank"
-              class="footer-link me-4"
-              >Admin Templates</a
-            >
-
-            <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-            <a
-              href="https://themeselection.com/item/category/bootstrap-admin-templates/"
-              target="_blank"
-              class="footer-link me-4"
-              >Bootstrap Dashboard</a
-            >
-
-            <a
-              href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/"
-              target="_blank"
-              class="footer-link me-4"
-              >Documentation</a
-            >
-
-            <a
-              href="https://github.com/themeselection/sneat-bootstrap-html-admin-template-free/issues"
-              target="_blank"
-              class="footer-link"
-              >Support</a
-            >
-          </div>
-    </footer>
     <!-- / Footer -->
 
     <div class="content-backdrop fade"></div>

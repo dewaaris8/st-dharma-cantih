@@ -14,6 +14,11 @@ class PengumumanController extends Controller
     {
         // $pengumuman = Pengumuman::latest()->get();
         // return view('pengumuman', compact('pengumuman'));
+        $pengumuman = Pengumuman::all();
+    
+        return view('pengumuman.index', compact(
+            'pengumuman'
+        ));
     }
 
     public function create()
@@ -36,7 +41,7 @@ class PengumumanController extends Controller
 
         Pengumuman::create($request->all());
 
-        return redirect()->route('dashboard')->with('success', 'Pengumuman berhasil ditambahkan.');
+        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil ditambahkan.');
     }
 
     public function edit(Pengumuman $pengumuman)
@@ -53,13 +58,13 @@ class PengumumanController extends Controller
 
         $pengumuman->update($request->all());
 
-        return redirect()->route('dashboard')->with('success', 'Pengumuman berhasil diperbarui.');
+        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil diperbarui.');
     }
 
     public function destroy(Pengumuman $pengumuman)
     {
         $pengumuman->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Pengumuman berhasil dihapus.');
+        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil dihapus.');
     }
 }

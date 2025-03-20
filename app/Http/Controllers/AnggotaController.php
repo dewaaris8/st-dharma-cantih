@@ -26,17 +26,22 @@ class AnggotaController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email|unique:anggotas',
-            'telepon' => 'required'
-        ]);
+{
+    $request->validate([
+        'nama' => 'required|string|max:255',
+        'email' => 'required|email|unique:anggotas,email',
+        'telepon' => 'required|numeric|digits_between:10,15',
+        'alamat' => 'required|string|max:255',
+        'nama_ibu' => 'required|string|max:255',
+        'nama_ayah' => 'required|string|max:255',
+        'daerah' => 'required|string|in:Kaja Kauh,Kaja Kangin,Delod',
+    ]);
 
-        Anggota::create($request->all());
+    Anggota::create($request->all());
 
-        return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil ditambahkan.');
-    }
+    return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil ditambahkan.');
+}
+
 
     public function edit(Anggota $anggota)
     {

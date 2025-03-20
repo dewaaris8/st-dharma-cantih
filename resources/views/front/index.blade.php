@@ -18,16 +18,30 @@
     <div id="popup-modal" class="fixed inset-0 flex z-[100] items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden transition-opacity duration-300">
         <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full transform scale-95 transition-transform duration-300">
             <div class="flex justify-between items-center">
-                <h2 class="text-xl font-bold text-gray-800">Pengumuman</h2>
+                <h2 class="text-lg font-semibold text-gray-800">Pengumuman</h2>
                 <button id="close-popup" class="text-gray-500 hover:text-gray-800 transition">
                     ✖
                 </button>
             </div>
-            <p class="mt-3 text-gray-600 leading-relaxed">
+    
+            <!-- Konten Pengumuman -->
+            <p id="pengumuman-text" class="mt-3 text-gray-600 leading-relaxed text-sm">
                 {{ $pengumuman->first()?->deskripsi ?? 'Tidak ada pengumuman saat ini.' }}
             </p>
-            <div class="mt-4 flex justify-end">
-                <button id="close-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">Tutup Pengumuman</button>
+    
+            <!-- Navigasi Pengumuman -->
+            <div class="mt-4 flex justify-between">
+                <button id="prev-button" class="text-gray-600 hover:text-gray-900 transition disabled:text-gray-300">
+                    ←
+                </button>
+                <button id="next-button" class="text-gray-600 hover:text-gray-900 transition disabled:text-gray-300">
+                    →
+                </button>
+            </div>
+    
+            <!-- Tombol Tutup -->
+            <div class="mt-4 flex justify-center">
+                <button id="close-button" class="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all">Tutup</button>
             </div>
         </div>
     </div>
@@ -45,6 +59,7 @@
                 <li><a href='{{ route('home') }}' class="hover:text-gray-300">Home</a></li>
                 <li><a href='{{ route('home') }}'  class="hover:text-gray-300">Pengumuman</a></li>
                 <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Absensi</a></li>
+                <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Barang</a></li>
                 <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
             </ul>
         </div>
@@ -159,7 +174,7 @@
         
         
         
-        {{-- <section class="w-full px-6 md:px-20 py-16 ">
+        <section class="w-full px-6 md:px-20 py-16 ">
             <h1 class="text-[30px] font-semibold text-center mb-10 uppercase">Galeri Kegiatan</h1>
         
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -191,7 +206,7 @@
                     <button class="absolute top-2 right-2 text-white text-2xl font-bold bg-gray-800 rounded-full px-3 py-1 hover:bg-red-600 transition-colors" onclick="closeModal()">✖</button>
                 </div>
             </div>
-        </section> --}}
+        </section>
         
         {{-- <section>
             <div class="w-full text-white text-[20px] bg-blue-700 min-h-[200px] flex gap-5 items-center justify-center">
@@ -351,6 +366,54 @@
                 document.getElementById('modal').classList.add('hidden');
             }, 300);
         }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let pengumumanData = @json($pengumuman);
+            let currentIndex = 0; // Set ke indeks pertama (pengumuman terbaru)
+    
+            const popup = document.getElementById("popup-modal");
+            const closePopup = document.getElementById("close-popup");
+            const closeButton = document.getElementById("close-button");
+            const pengumumanText = document.getElementById("pengumuman-text");
+            const prevButton = document.getElementById("prev-button");
+            const nextButton = document.getElementById("next-button");
+    
+            // Fungsi untuk memperbarui teks pengumuman
+            function updatePengumuman() {
+                pengumumanText.textContent = pengumumanData[currentIndex]?.deskripsi ?? "Tidak ada pengumuman.";
+                prevButton.disabled = currentIndex === pengumumanData.length - 1;
+                nextButton.disabled = currentIndex === 0;
+            }
+    
+            // Event tombol sebelumnya (ke pengumuman lama)
+            prevButton.addEventListener("click", function () {
+                if (currentIndex < pengumumanData.length - 1) {
+                    currentIndex++;
+                    updatePengumuman();
+                }
+            });
+    
+            // Event tombol selanjutnya (kembali ke pengumuman baru)
+            nextButton.addEventListener("click", function () {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updatePengumuman();
+                }
+            });
+    
+            // Event untuk menutup popup
+            closePopup.addEventListener("click", function () {
+                popup.classList.add("hidden");
+            });
+            closeButton.addEventListener("click", function () {
+                popup.classList.add("hidden");
+            });
+    
+            // Tampilkan popup secara otomatis dengan pengumuman terbaru
+            popup.classList.remove("hidden");
+            updatePengumuman();
+        });
     </script>
     
 </body>

@@ -8,6 +8,13 @@
             <h5 class="mb-0">Daftar Peminjaman</h5>
             <a href="{{ route('admin.peminjaman.create') }}" class="btn btn-primary mb-3">Tambah Peminjaman</a>
           </div>
+          @if(session('success'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {{ session('success') }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          @endif
+
         <div class="table-responsive text-nowrap">
           <table class="table">
             <thead>

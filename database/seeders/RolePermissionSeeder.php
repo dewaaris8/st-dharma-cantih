@@ -54,6 +54,20 @@ class RolePermissionSeeder extends Seeder
         ]);
         $user->assignRole($superAdminRole);
 
+        // $superAdmin2 = User::create([
+        //     'name' => "Super Admin 2",
+        //     'email' => "super2@admin.com",
+        //     'password' => bcrypt('88888888'),
+        // ]);
+        // $superAdmin2->assignRole($superAdminRole);
+    
+        // $superAdmin3 = User::create([
+        //     'name' => "Super Admin 3",
+        //     'email' => "super3@admin.com",
+        //     'password' => bcrypt('88888888'),
+        // ]);
+        // $superAdmin3->assignRole($superAdminRole);
+
 
     }
 }

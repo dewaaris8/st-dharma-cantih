@@ -7,7 +7,6 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
           <h5 class="mb-0">Edit Acara atau Kegiatan</h5>
-          <small class="text-body float-end">Perbarui detail acara</small>
         </div>
         <div class="card-body">
             <form action="{{ route('admin.acara.update', $acara->id) }}" method="POST">

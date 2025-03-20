@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Anggota;
+use App\Models\InventarisBarang;
 use App\Models\Pengumuman;
 use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
@@ -13,10 +14,10 @@ class FrontController extends Controller
 {
     //
     public function index(){
-        $pengumuman = Pengumuman::orderByDesc('id')->take(1)->get();
-        
+        $pengumuman = Pengumuman::orderByDesc('id')->get();
+        $inventarisBarangs = InventarisBarang::orderByDesc('id')->get();
 
-        return view('front.index', compact('pengumuman'));
+        return view('front.index', compact('pengumuman', 'inventarisBarangs'));
     }
 
     public function absensi(){
@@ -37,7 +38,16 @@ class FrontController extends Controller
         $dataAbsensi[$daerah] = $anggota;
     }
 
-    return view('front.absensi', compact('dataAbsensi'));
+    $inventarisBarangs = InventarisBarang::orderByDesc('id')->get();
+
+    return view('front.absensi', compact('dataAbsensi', 'inventarisBarangs'));
+    }
+
+    public function barang(){
+        $pengumuman = Pengumuman::orderByDesc('id')->get();
+        $inventarisBarangs = InventarisBarang::orderByDesc('id')->get();
+
+        return view('front.barang', compact('pengumuman', 'inventarisBarangs'));
     }
 
     public function cetakPdf($daerah)

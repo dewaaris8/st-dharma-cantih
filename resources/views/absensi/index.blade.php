@@ -11,7 +11,13 @@
                 <h5 class="mb-0">Detail Absensi untuk Acara: {{ $acara->nama }}</h5>
                 <a href="{{ route('admin.absensi.edit', $acara->id) }}" class="btn btn-secondary">Edit Absensi</a>
             </div>
-            
+            @if(session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             
             <div class="table-responsive text-nowrap">
                 @foreach($absensi as $daerah => $dataAbsensi)

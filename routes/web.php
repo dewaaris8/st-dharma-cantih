@@ -40,6 +40,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/absensi', [FrontController::class, 'absensi'])->name('absensi');
+Route::get('/inventaris', [FrontController::class, 'barang'])->name('barang');
 Route::get('/inventaris/pdf', [InventarisBarangController::class, 'cetakPdf'])->name('inventaris.pdf');
 Route::get('/anggota/pdf', [AnggotaController::class, 'cetakPdf'])->name('anggota.pdf');
 
