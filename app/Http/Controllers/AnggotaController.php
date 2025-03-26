@@ -7,11 +7,24 @@ use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
 
 class AnggotaController extends Controller
 {
-    public function index()
-    {
-        $anggota = Anggota::all();
-        return view('anggota.index', compact('anggota'));
+    public function index(Request $request)
+{
+    $query = Anggota::query();
+
+    if ($request->has('search')) {
+        $search = $request->input('search');
+        $query->where('nama', 'LIKE', "%$search%")
+              ->orWhere('email', 'LIKE', "%$search%")
+              ->orWhere('daerah', 'LIKE', "%$search%");
     }
+
+    $anggota = $query->paginate(10);
+
+    return view('anggota.index', compact('anggota'));
+}
+
+    
+
 
     public function cetakPdf()
     {
@@ -35,6 +48,7 @@ class AnggotaController extends Controller
         'nama_ibu' => 'required|string|max:255',
         'nama_ayah' => 'required|string|max:255',
         'daerah' => 'required|string|in:Kaja Kauh,Kaja Kangin,Delod',
+        'status' => 'required|in:Aktif,Tidak Aktif',
     ]);
 
     Anggota::create($request->all());
@@ -53,7 +67,10 @@ class AnggotaController extends Controller
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:anggotas,email,' . $anggota->id,
-            'telepon' => 'required'
+            'telepon' => 'required',
+            'nama_ibu' => 'required|string|max:255',
+            'nama_ayah' => 'required|string|max:255',
+            'status' => 'required|in:Aktif,Tidak Aktif',
         ]);
 
         $anggota->update($request->all());

@@ -9,6 +9,7 @@ use App\Http\Controllers\InventarisBarangController;
 use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -41,6 +42,7 @@ Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/absensi', [FrontController::class, 'absensi'])->name('absensi');
 Route::get('/inventaris', [FrontController::class, 'barang'])->name('barang');
+Route::get('/pengumuman', [FrontController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/inventaris/pdf', [InventarisBarangController::class, 'cetakPdf'])->name('inventaris.pdf');
 Route::get('/anggota/pdf', [AnggotaController::class, 'cetakPdf'])->name('anggota.pdf');
 
@@ -78,6 +80,11 @@ Route::middleware('auth')->group(function () {
             Route::get('/admin/absensi/{absensi}/edit', [AbsensiAnggotaController::class, 'editSingle'])->name('absensi.editSingle');
             Route::put('/admin/absensi/{absensi}', [AbsensiAnggotaController::class, 'updateSingle'])->name('absensi.updateSingle');
             Route::resource('pengumuman', PengumumanController::class);
+            Route::resource('users', UserController::class);
+            Route::get('/admin/absensi/preview/{acara}', [AbsensiAnggotaController::class, 'previewPDF'])->name('absensi.previewPDF');
+Route::get('/admin/absensi/download/{acara}', [AbsensiAnggotaController::class, 'downloadPDF'])->name('absensi.downloadPDF');
+
+
             // Route::get('/absensi/pdf/{daerah}', [AbsensiAnggotaController::class, 'cetakPDF'])->name('absensi.pdf');
 
 

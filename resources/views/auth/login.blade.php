@@ -73,6 +73,13 @@
               <h4 class="mb-1">Selamat Datang di ST. Dharma Cantih</h4>
               <p class="mb-6">Silahkan login untuk melanjutkan</p>
 
+              @if (session('error'))
+                  <div class="alert alert-danger text-center">
+                      {{ session('error') }}
+                  </div>
+              @endif
+
+
               <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="mb-6">

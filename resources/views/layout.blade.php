@@ -72,19 +72,19 @@
                       <div class="text-truncate" data-i18n="Layouts">Dashboard</div>
                     </a>
                   </li>
-                  <li class="menu-item active open">
+                  <li class="menu-item {{ Route::is('admin.pengumuman.*') ? 'active open' : '' }} ">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-home-smile"></i>
                       <div class="text-truncate" data-i18n="Dashboards">Pengumuman</div>
                       {{-- <span class="badge rounded-pill bg-danger ms-auto">5</span> --}}
                     </a>
                     <ul class="menu-sub">
-                      <li class="menu-item active">
+                      <li class="menu-item {{ Route::is('admin.pengumuman.index') ? 'active ' : '' }}">
                         <a href="{{route('admin.pengumuman.index')}}" class="menu-link">
                           <div class="text-truncate" data-i18n="Analytics"> Data Pengumuman</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.pengumuman.create') ? 'active ' : '' }}">
                         <a
                           href="{{route('admin.pengumuman.create')}}"
                           class="menu-link"> 
@@ -97,19 +97,19 @@
                   <!-- Layouts -->
                   
                   
-                  <li class="menu-item">
+                  <li class="menu-item {{ Route::is('admin.anggota.*') ? 'active open' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-layout"></i>
                       <div class="text-truncate" data-i18n="Layouts">Anggota</div>
                     </a>
       
                     <ul class="menu-sub">
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.anggota.index') ? 'active' : '' }}">
                         <a href="{{route('admin.anggota.index')}}" class="menu-link">
                           <div class="text-truncate" data-i18n="Without menu">Data Anggota</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.anggota.create') ? 'active' : '' }}">
                         <a href="{{route('admin.anggota.create')}}" class="menu-link">
                           <div class="text-truncate" data-i18n="Without navbar">Tambah Anggota</div>
                         </a>
@@ -118,13 +118,13 @@
                   </li>
       
                   <!-- Front Pages -->
-                  <li class="menu-item">
+                  <li class="menu-item {{ Route::is('admin.inventaris.*') ? 'active open' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-store"></i>
                       <div class="text-truncate" data-i18n="Front Pages">Inventaris Barang</div>
                     </a>
                     <ul class="menu-sub">
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.inventaris.index') ? 'active' : '' }}">
                         <a
                           href="{{route('admin.inventaris.index')}}"
                           class="menu-link"
@@ -132,7 +132,7 @@
                           <div class="text-truncate" data-i18n="Landing">Data Inventaris Barang</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.inventaris.create') ? 'active' : '' }}">
                         <a
                           href="{{route('admin.inventaris.create')}}"
                           class="menu-link"
@@ -142,21 +142,21 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item {{ Route::is('admin.acara.*') ? 'active open' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-store"></i>
-                      <div class="text-truncate" data-i18n="Front Pages">Acara & Absensi</div>
+                      <div class="text-truncate" data-i18n="Front Pages">Acara & Presensi</div>
                     </a>
                     <ul class="menu-sub">
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.acara.index') ? 'active' : '' }}">
                         <a
                           href="{{route('admin.acara.index')}}"
                           class="menu-link"
                           >
-                          <div class="text-truncate" data-i18n="Landing">Data Acara & Absensi</div>
+                          <div class="text-truncate" data-i18n="Landing">Data Acara & Presensi</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.acara.create') ? 'active' : '' }}">
                         <a
                           href="{{route('admin.acara.create')}}"
                           class="menu-link"
@@ -166,13 +166,13 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="menu-item">
+                  <li class="menu-item {{ Route::is('admin.peminjaman.*') ? 'active open' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-store"></i>
                       <div class="text-truncate" data-i18n="Front Pages">Peminjaman Barang</div>
                     </a>
                     <ul class="menu-sub">
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.peminjaman.index') ? 'active' : '' }}">
                         <a
                           href="{{route('admin.peminjaman.index')}}"
                           class="menu-link"
@@ -180,7 +180,7 @@
                           <div class="text-truncate" data-i18n="Landing">Data Peminjaman Barang</div>
                         </a>
                       </li>
-                      <li class="menu-item">
+                      <li class="menu-item {{ Route::is('admin.peminjaman.create') ? 'active' : '' }}">
                         <a
                           href="{{route('admin.peminjaman.create')}}"
                           class="menu-link"
@@ -204,17 +204,17 @@
                     <ul class="menu-sub">
                       <li class="menu-item">
                         <a href="{{ route('admin.absensi.pdf', 'Delod') }}" class="menu-link">
-                              Cetak Absensi Anggota Delod
+                              Cetak Presensi Anggota Delod
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="{{ route('admin.absensi.pdf', 'Kaja Kangin') }}" class="menu-link">
-                              Cetak Absensi Anggota Kaja Kangin
+                              Cetak Presensi Anggota Kaja Kangin
                         </a>
                       </li>
                       <li class="menu-item">
                         <a href="{{ route('admin.absensi.pdf', 'Kaja Kauh') }}" class="menu-link">
-                              Cetak Absensi Anggota Kaja Kauh
+                              Cetak Presensi Anggota Kaja Kauh
                         </a>
                       </li>
                       <li class="menu-item">
@@ -233,14 +233,21 @@
                     <span class="menu-header-text">Apps &amp; Pages</span>
                   </li>
                   <!-- Pages -->
-                  <li class="menu-item">
+                  <li class="menu-item {{ Route::is('admin.users.*') ? 'active open' : '' }}">
                     <a href="javascript:void(0);" class="menu-link menu-toggle">
                       <i class="menu-icon tf-icons bx bx-dock-top"></i>
                       <div class="text-truncate" data-i18n="Account Settings">Account Settings</div>
                     </a>
-                    <ul class="menu-sub">
-                      <li class="menu-item">
-                        
+                    <ul class="menu-sub ">
+                      <li class="menu-item {{ Route::is('admin.users.index') ? 'active' : '' }}">
+                        <a href="{{ route('admin.users.index') }}" class="menu-link">
+                          Data Admin
+                        </a>
+                      </li>
+                      <li class="menu-item {{ Route::is('admin.users.create') ? 'active' : '' }}">
+                        <a href="{{ route('admin.users.create') }}" class="menu-link">
+                          Tambah Admin
+                        </a>
                       </li>
                       <li class="menu-item">
                         <a href="" class="menu-link">
@@ -252,6 +259,7 @@
                           </form>
                         </a>
                       </li>
+                      
                     </ul>
                   </li>
                 </ul>

@@ -21,30 +21,30 @@ class PeminjamanController extends Controller
 
     public function store(Request $request)
     {
+        // Ambil data barang dari inventaris
+        $barang = InventarisBarang::findOrFail($request->inventaris_id);
+    
+        // Validasi input termasuk stok barang
         $request->validate([
             'inventaris_id' => 'required|exists:inventaris_barangs,id',
-            'jumlah_dipinjam' => 'required|integer|min:1',
+            'jumlah_dipinjam' => ['required', 'integer', 'min:1', function ($attribute, $value, $fail) use ($barang) {
+                if ($value > $barang->jumlah) {
+                    $fail("Jumlah yang dipinjam tidak boleh melebihi stok yang tersedia ({$barang->jumlah}).");
+                }
+            }],
             'durasi_pinjam' => 'required|integer|min:1',
             'tanggal_pinjam' => 'required|date',
             'nama_peminjam' => 'required|string|max:255',
             'nomor_peminjam' => 'required|string|max:15',
         ]);
-
-        // Ambil data barang dari inventaris
-        $barang = InventarisBarang::findOrFail($request->inventaris_id);
-
-        // Cek stok barang
-        if ($barang->jumlah < $request->jumlah_dipinjam) {
-            return back()->with('error', 'Stok tidak mencukupi!')->withInput();
-        }
-
+    
         // Kurangi stok barang
         $barang->jumlah -= $request->jumlah_dipinjam;
         $barang->save();
-
+    
         // Hitung tanggal kembali otomatis
         $tanggal_kembali = date('Y-m-d', strtotime("+{$request->durasi_pinjam} days", strtotime($request->tanggal_pinjam)));
-
+    
         // Simpan peminjaman
         Peminjaman::create([
             'inventaris_id' => $request->inventaris_id,
@@ -52,13 +52,14 @@ class PeminjamanController extends Controller
             'durasi_pinjam' => $request->durasi_pinjam,
             'tanggal_pinjam' => $request->tanggal_pinjam,
             'tanggal_kembali' => $tanggal_kembali,
-            'status' => 'Belum dipinjam',
+            'status' => 'Belum dipinjam', // Ubah default status menjadi "Dipinjam"
             'nama_peminjam' => $request->nama_peminjam,
             'nomor_peminjam' => $request->nomor_peminjam,
         ]);
-
+    
         return redirect()->route('admin.peminjaman.index')->with('success', 'Peminjaman berhasil ditambahkan.');
     }
+    
     
     
 

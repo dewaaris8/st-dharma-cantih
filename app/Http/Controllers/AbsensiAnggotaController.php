@@ -132,4 +132,47 @@ public function cetakPDF($daerah)
 
         return $pdf->download("laporan-absensi-$daerah.pdf");
     }
+
+    public function previewPDF(Acara $acara)
+{
+    $dataAbsensi = AbsensiAnggota::where('acara_id', $acara->id)
+        ->with('anggota')
+        ->get()
+        ->groupBy(function ($item) {
+            return $item->anggota->daerah;
+        });
+
+    if ($dataAbsensi->isEmpty()) {
+        return redirect()->back()->with('error', 'Tidak ada data absensi untuk acara ini.');
+    }
+
+    $pdf = PDF::loadView('pdf.absensi2', compact('dataAbsensi', 'acara'))
+        ->setPaper('a4', 'landscape');
+
+    return $pdf->stream("preview-absensi-{$acara->nama}.pdf");
 }
+
+public function downloadPDF(Acara $acara)
+{
+    $dataAbsensi = AbsensiAnggota::where('acara_id', $acara->id)
+        ->with('anggota')
+        ->get()
+        ->groupBy(function ($item) {
+            return $item->anggota->daerah;
+        });
+
+    if ($dataAbsensi->isEmpty()) {
+        return redirect()->back()->with('error', 'Tidak ada data absensi untuk acara ini.');
+    }
+
+    $pdf = PDF::loadView('pdf.absensi2', compact('dataAbsensi', 'acara'))
+        ->setPaper('a4', 'landscape');
+
+    return $pdf->download("laporan-absensi-{$acara->nama}.pdf");
+}
+}
+
+
+
+
+

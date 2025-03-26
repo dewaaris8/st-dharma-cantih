@@ -20,7 +20,7 @@
             </button>
             <ul class="hidden md:flex space-x-6 text-white">
                 <li><a href='{{ route('home') }}' class="hover:text-gray-300">Home</a></li>
-                <li><a href='{{ route('home') }}'  class="hover:text-gray-300">Pengumuman</a></li>
+                <li><a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a></li>
                 <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Absensi</a></li>
                 <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Barang</a></li>
                 <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
@@ -134,47 +134,5 @@
                 location.reload(); // Reloads the current page
             });
         });
-    </script>
-    
-    
+    </script>    
 </body>
-{{-- </html>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Absensi</title>
-</head>
-<body>
-    <h1>Data Absensi</h1>
-
-    @foreach ($dataAbsensi as $daerah => $anggotaList)
-        <button onclick="window.location.href='{{ route('absensi.pdf', $daerah) }}'">
-            Cetak PDF Absensi {{ $daerah }}
-        </button>
-        
-        <h2>Data Absensi - {{ $daerah }}</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Nama</th>
-                    <th>Hadir</th>
-                    <th>Tidak Hadir</th>
-                    <th>Sakit</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($anggotaList as $anggota)
-                    <tr>
-                        <td>{{ $anggota->nama }}</td>
-                        <td>{{ $anggota->absensi->sum('total_hadir') }}</td>
-                        <td>{{ $anggota->absensi->sum('total_tidak_hadir') }}</td>
-                        <td>{{ $anggota->absensi->sum('total_sakit') }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endforeach
-</body>
-</html> --}}

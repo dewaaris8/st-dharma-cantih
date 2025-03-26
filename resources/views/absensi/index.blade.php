@@ -4,12 +4,12 @@
 
 @section('content')
     @if($absensi->isEmpty())
-        <div class="alert alert-warning">Belum ada absensi untuk acara ini.</div>
+        <div class="alert alert-warning">Belum ada Presensi untuk acara ini.</div>
     @else
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0">Detail Absensi untuk Acara: {{ $acara->nama }}</h5>
-                <a href="{{ route('admin.absensi.edit', $acara->id) }}" class="btn btn-secondary">Edit Absensi</a>
+                <h5 class="mb-0">Detail Presensi untuk Acara: {{ $acara->nama }}</h5>
+                <a href="{{ route('admin.absensi.edit', $acara->id) }}" class="btn btn-secondary">Edit Presensi</a>
             </div>
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -18,7 +18,6 @@
                 </div>
             @endif
 
-            
             <div class="table-responsive text-nowrap">
                 @foreach($absensi as $daerah => $dataAbsensi)
                     <div class="mt-4">
@@ -26,6 +25,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Nama Anggota</th>
                                     <th>Status Kehadiran</th>
                                     <th>Tanggal</th>
@@ -33,8 +33,9 @@
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                @foreach($dataAbsensi as $item)
+                                @foreach($dataAbsensi as $index => $item)
                                     <tr>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>{{ $item->anggota->nama }}</td>
                                         <td>{{ $item->status }}</td>
                                         <td>{{ $item->tanggal }}</td>

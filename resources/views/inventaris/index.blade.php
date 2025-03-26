@@ -12,11 +12,12 @@
         <div class="card-header d-flex justify-content-between align-items-center">
             <h5 class="mb-0">Inventaris Barang</h5>
             <a href="{{ route('admin.inventaris.create') }}" class="btn btn-primary mb-3">Tambah Barang</a>
-          </div>
+        </div>
         <div class="table-responsive text-nowrap">
           <table class="table">
             <thead>
               <tr>
+                <th>No</th>
                 <th>Nama Barang</th>
                 <th>Jumlah</th>
                 <th>Kondisi</th>
@@ -24,15 +25,12 @@
               </tr>
             </thead>
             <tbody class="table-border-bottom-0">
-            @foreach($barang as $item)
+            @foreach($barang as $index => $item)
               <tr>
-                <td>
-                    <span>{{ $item->nama_barang }}</span>
-                </td>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $item->nama_barang }}</td>
                 <td>{{ $item->jumlah }}</td>
-                <td>
-                    {{ $item->catatan }}
-                </td>
+                <td>{{ $item->catatan }}</td>
                 <td>
                     <a href="{{ route('admin.inventaris.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                     <form action="{{ route('admin.inventaris.destroy', $item->id) }}" method="POST" style="display:inline;">

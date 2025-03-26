@@ -101,6 +101,17 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="mb-6">
+                    <label class="form-label" for="basic-icon-default-status">Status</label>
+                    <select class="form-select @error('status') is-invalid @enderror"
+                        id="basic-icon-default-status" name="status">
+                        <option value="Aktif" {{ old('status') == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                        <option value="Tidak Aktif" {{ old('status') == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                    </select>
+                    @error('status')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
 
                 <button type="submit" class="btn btn-primary">Send</button>
             </form>

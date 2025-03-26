@@ -12,7 +12,7 @@
 
     <div class="bg-white shadow-md rounded-lg p-6">
         <div class="flex justify-between items-center border-b pb-4 mb-4">
-            <h5 class="text-lg font-semibold">Buat Absensi untuk {{ $acara->nama }}</h5>
+            <h5 class="text-lg font-semibold">Buat Presensi untuk {{ $acara->nama }}</h5>
         </div>
 
         <form action="{{ route('admin.absensi.store', $acara->id) }}" method="POST">
@@ -51,7 +51,7 @@
             
             <div class="mt-4">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-300">
-                    Simpan Absensi
+                    Simpan Presensi
                 </button>
             </div>
         </form>

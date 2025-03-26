@@ -10,7 +10,8 @@ class Anggota extends Model
     //
     use HasFactory;
 
-    protected $fillable = ['nama', 'email', 'telepon', 'alamat', 'nama_ibu', 'nama_ayah', 'daerah'];
+    protected $fillable = ['nama', 'email', 'telepon', 'alamat', 'nama_ibu', 'nama_ayah', 'daerah', 'status'];
+
 
 
     public function absensi()

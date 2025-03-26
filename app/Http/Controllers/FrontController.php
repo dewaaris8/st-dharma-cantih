@@ -14,7 +14,7 @@ class FrontController extends Controller
 {
     //
     public function index(){
-        $pengumuman = Pengumuman::orderByDesc('id')->get();
+        $pengumuman = Pengumuman::orderByDesc('id')->take(1)->get();
         $inventarisBarangs = InventarisBarang::orderByDesc('id')->get();
 
         return view('front.index', compact('pengumuman', 'inventarisBarangs'));
@@ -48,6 +48,14 @@ class FrontController extends Controller
         $inventarisBarangs = InventarisBarang::orderByDesc('id')->get();
 
         return view('front.barang', compact('pengumuman', 'inventarisBarangs'));
+    }
+
+    public function pengumuman(){
+        $pengumuman = Pengumuman::all();
+    
+        return view('front.pengumuman', compact(
+            'pengumuman'
+        )); 
     }
 
     public function cetakPdf($daerah)

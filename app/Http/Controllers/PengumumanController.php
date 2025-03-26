@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengumuman;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PengumumanController extends Controller
@@ -12,12 +13,11 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        // $pengumuman = Pengumuman::latest()->get();
-        // return view('pengumuman', compact('pengumuman'));
+        $users = User::all();
         $pengumuman = Pengumuman::all();
-    
         return view('pengumuman.index', compact(
-            'pengumuman'
+            'pengumuman',
+            'users'
         ));
     }
 

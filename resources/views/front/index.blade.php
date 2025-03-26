@@ -15,7 +15,7 @@
 
 </head>
 <body>
-    <div id="popup-modal" class="fixed inset-0 flex z-[100] items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden transition-opacity duration-300">
+    {{-- <div id="popup-modal" class="fixed inset-0 flex z-[100] items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden transition-opacity duration-300">
         <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full transform scale-95 transition-transform duration-300">
             <div class="flex justify-between items-center">
                 <h2 class="text-lg font-semibold text-gray-800">Pengumuman</h2>
@@ -44,6 +44,23 @@
                 <button id="close-button" class="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all">Tutup</button>
             </div>
         </div>
+    </div> --}}
+
+    <div id="popup-modal" class="fixed inset-0 flex z-[100] items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm hidden transition-opacity duration-300">
+        <div class="bg-white p-6 rounded-2xl shadow-2xl max-w-md w-full transform scale-95 transition-transform duration-300">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold text-gray-800">Pengumuman</h2>
+                <button id="close-popup" class="text-gray-500 hover:text-gray-800 transition">
+                    ✖
+                </button>
+            </div>
+            <p class="mt-3 text-gray-600 leading-relaxed">
+                {{ $pengumuman->first()?->deskripsi ?? 'Tidak ada pengumuman saat ini.' }}
+            </p>
+            <div class="mt-4 flex justify-end">
+                <button id="close-button" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">Tutup Pengumuman</button>
+            </div>
+        </div>
     </div>
     
     
@@ -57,7 +74,7 @@
             </button>
             <ul class="hidden md:flex space-x-6 text-white">
                 <li><a href='{{ route('home') }}' class="hover:text-gray-300">Home</a></li>
-                <li><a href='{{ route('home') }}'  class="hover:text-gray-300">Pengumuman</a></li>
+                <li><a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a></li>
                 <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Absensi</a></li>
                 <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Barang</a></li>
                 <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
