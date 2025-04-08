@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Absensi</title>
+    <title>Presensi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/stdc.png') }}" />
 
 </head>
-<body> 
+<body>
     <nav class="bg-blue-600 font-poppins rounded-b-xl p-4">
         <div class="container px-20 mx-auto flex justify-between items-center">
             <a href="{{ route('home') }}" class="text-white text-xl font-bold"><img class="w-10 h-10" src="{{ asset('img/stdc.png') }}" alt=""></a>
@@ -21,8 +21,8 @@
             <ul class="hidden md:flex space-x-6 text-white">
                 <li><a href='{{ route('home') }}' class="hover:text-gray-300">Home</a></li>
                 <li><a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a></li>
-                <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Absensi</a></li>
-                <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Barang</a></li>
+                <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Presensi</a></li>
+                <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Inventaris</a></li>
                 <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
             </ul>
         </div>
@@ -41,11 +41,11 @@
               </div>
             @foreach($dataAbsensi as $daerah => $anggotaList)
                 <div class="bg-white shadow-md rounded-lg overflow-hidden mb-6">
-                    <div class="px-6 py-3 text-white text-lg font-semibold 
+                    <div class="px-6 py-3 text-white text-lg font-semibold
                         {{ $loop->iteration % 3 == 1 ? 'bg-blue-600' : ($loop->iteration % 3 == 2 ? 'bg-green-600' : 'bg-yellow-500 text-black') }}">
                         🗺️ Daerah: {{ $daerah }}
                     </div>
-        
+
                     <div class="overflow-x-auto">
                         <table class="min-w-full bg-white border border-gray-200">
                             <thead class="bg-gray-800 text-white">
@@ -80,7 +80,7 @@
                             </tbody>
                         </table>
                     </div>
-                    
+
                 </div>
             @endforeach
         </div>
@@ -111,10 +111,10 @@
               dragFree: true,
             });
           };
-      
+
           // Initial Embla setup
           let embla = initializeEmbla(window.matchMedia('(max-width: 640px)').matches ? 'start' : 'center');
-      
+
           // Listen for screen size changes
           const mediaQuery = window.matchMedia('(max-width: 640px)');
           mediaQuery.addEventListener('change', (event) => {
@@ -129,14 +129,14 @@
             const popupModal = document.getElementById('popup-modal');
             const closePopup = document.getElementById('close-popup');
             const closeButton = document.getElementById('close-button');
-    
+
             // Show the modal with animation
             popupModal.classList.remove('hidden');
             setTimeout(() => {
                 popupModal.classList.add('opacity-100');
                 popupModal.querySelector('div').classList.add('scale-100');
             }, 100);
-    
+
             // Function to close modal
             function closeModal() {
                 popupModal.classList.remove('opacity-100');
@@ -146,7 +146,7 @@
                 }, 300);
             }
 
-            
+
             // Close the modal when buttons are clicked
             closePopup.addEventListener('click', closeModal);
             closeButton.addEventListener('click', closeModal);
@@ -155,8 +155,8 @@
             });
         });
     </script>
-    
-    
+
+
 </body>
 {{-- </html>
 <!DOCTYPE html>
@@ -173,7 +173,7 @@
         <button onclick="window.location.href='{{ route('absensi.pdf', $daerah) }}'">
             Cetak PDF Absensi {{ $daerah }}
         </button>
-        
+
         <h2>Data Absensi - {{ $daerah }}</h2>
         <table border="1">
             <thead>

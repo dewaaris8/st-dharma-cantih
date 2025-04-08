@@ -43,7 +43,7 @@
                         @csrf @method('DELETE')
                         <button class="btn btn-danger btn-sm" onclick="return confirm('Hapus acara ini?')">Hapus</button>
                     </form>
-                </td>   
+                </td>
               </tr>
             @endforeach
             </tbody>

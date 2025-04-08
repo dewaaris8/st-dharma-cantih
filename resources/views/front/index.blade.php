@@ -23,12 +23,12 @@
                     ✖
                 </button>
             </div>
-    
+
             <!-- Konten Pengumuman -->
             <p id="pengumuman-text" class="mt-3 text-gray-600 leading-relaxed text-sm">
                 {{ $pengumuman->first()?->deskripsi ?? 'Tidak ada pengumuman saat ini.' }}
             </p>
-    
+
             <!-- Navigasi Pengumuman -->
             <div class="mt-4 flex justify-between">
                 <button id="prev-button" class="text-gray-600 hover:text-gray-900 transition disabled:text-gray-300">
@@ -38,7 +38,7 @@
                     →
                 </button>
             </div>
-    
+
             <!-- Tombol Tutup -->
             <div class="mt-4 flex justify-center">
                 <button id="close-button" class="px-4 py-2 text-sm bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-all">Tutup</button>
@@ -62,8 +62,8 @@
             </div>
         </div>
     </div>
-    
-    
+
+
     <nav class="bg-blue-600 font-poppins rounded-b-xl p-4">
         <div class="container px-20 mx-auto flex justify-between items-center">
             <a href="{{ route('home') }}" class="text-white text-xl font-bold"><img class="w-10 h-10" src="{{ asset('img/stdc.png') }}" alt=""></a>
@@ -75,8 +75,8 @@
             <ul class="hidden md:flex space-x-6 text-white">
                 <li><a href='{{ route('home') }}' class="hover:text-gray-300">Home</a></li>
                 <li><a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a></li>
-                <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Absensi</a></li>
-                <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Barang</a></li>
+                <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Presensi</a></li>
+                <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Inventaris</a></li>
                 <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
             </ul>
         </div>
@@ -93,7 +93,7 @@
             <div class="w-full mt-10 flex h-[500px] items-center justify-between">
                 <div class="flex-1 px-20 flex flex-col gap-2">
                     <h3 class="text-[22px] font-poppins font-semibold mb-[-10px]  ">SELAMAT DATANG</h3>
-                    <h1 class="text-[30px] font-semibold ">ST. <SPAN class="italic">DHARMA CANTIH</SPAN></h1>
+                    <h1 class="text-[30px] font-semibold ">ST. DHARMA CANTIH</h1>
                     <p class="w-[80%] text-[16px]">ST. Dharma Cantih merupakan organisasi kemasyarakatan yang beranggotakan pemuda dan pemudi sebagai sarana pengembangan generasi muda untuk menumbuhkan kesadaran dan juga tanggung jawab sosial di Banjar Pande Pedungan.</p>
                     <a href="#lihat" ><div class="px-4 py-2 text-[13px] w-max flex justify-center items-center bg-blue-500 rounded-xl text-white">Lihat Selengkapnya</div></a>
                 </div>
@@ -106,7 +106,7 @@
             <div class="w-full  flex h-[500px] relative items-center flex-row-reverse justify-between">
                 <div class="flex-1 pl-20 flex flex-col pr-5 gap-2">
                     <h3 id="lihat" class="text-[30px] font-poppins font-semibold mb-[-15px]  ">SEJARAH</h3>
-                    <h1  class="text-[30px] font-semibold ">ST. PUTRA KAHYANGAN</h1>
+                    <h1  class="text-[30px] font-semibold ">ST. DHARMA CANTIH</h1>
                     <p class="w-[80%] text-[16px]">Sekeha Teruna Dharma Cantih atau STDC merupakan sebuah organisasi kepemudaan yang berada di lingkungan Banjar Pande Pedungan. Dimana organisasi ini sudah berdiri dari tahun 1936 dan sekarang memiliki anggota sebanyak 156 anggota yang dibagi menjadi 3 tempekan yaitu: kaje kangin marga, kaja kauh marga, dan delot marga.</p>
                 </div>
                 <div class="flex-1 rounded-r-xl flex relative items-center  w-full h-full">
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="w-[60%] absolute left-0 bg-blue-500 h-[450px] rounded-r-xl">
 
                     </div>
@@ -132,33 +132,33 @@
         </section>
         <section class="w-full px-6 md:px-20 py-16 ">
             <h1 class="text-[30px] font-semibold text-center mb-10">PENGURUS <br> ST DHARMA CANTIH</h1>
-        
+
             <div class="flex flex-wrap justify-center gap-10">
                 @foreach ([
                     ['name' => 'Aditya Prabawa', 'role' => 'Ketua', 'image' => asset('img/ketua.jpg'),],
-                    ['name' => 'Toby', 'role' => 'Wakil Ketua', 'image' => asset('img/wakil.jpg')],
-                    ['name' => 'Renaldi', 'role' => 'Sekretaris 1', 'image' => asset('img/sekretaris1.jpg')],
-                    ['name' => 'Nadutami', 'role' => 'Sekretaris 2', 'image' => asset('img/sekretaris2.jpg')],
-                    ['name' => 'Mangde', 'role' => 'Bendahara 1', 'image' => asset('img/bendahara1.jpg')],
+                    ['name' => 'Toby Pratama', 'role' => 'Wakil Ketua', 'image' => asset('img/wakil.jpg')],
+                    ['name' => 'Renaldi Dharma', 'role' => 'Sekretaris 1', 'image' => asset('img/sekretaris1.jpg')],
+                    ['name' => 'Nadyutami', 'role' => 'Sekretaris 2', 'image' => asset('img/sekretaris2.jpg')],
+                    ['name' => 'Pande Mangde', 'role' => 'Bendahara 1', 'image' => asset('img/bendahara1.jpg')],
                     ['name' => 'Ayu Cili', 'role' => 'Bendahara 2', 'image' => asset('img/bendahara2.jpg')],
-                    ['name' => 'Pande Wahyu', 'role' => 'Kesinoman', 'image' => asset('img/WAHYU.png')]
+                    ['name' => 'Pande Wahyu', 'role' => 'Kesinoman', 'image' => asset('img/wahyu.jpg')]
                 ] as $pengurus)
-        
+
                 <div class="w-[260px] bg-white shadow-lg rounded-xl p-6 text-center flex flex-col items-center transition-transform transform hover:scale-105 hover:shadow-2xl">
                     <div class="w-32 h-32 rounded-full border-4 overflow-hidden border-blue-500 p-1 flex justify-center items-center">
                         <img src="{{ $pengurus['image'] }}" alt="{{ $pengurus['name'] }}" class="w-full h-full rounded-full object-cover">
                     </div>
-                    
+
                     <h2 class="text-xl font-semibold text-gray-800 mt-4">{{ $pengurus['name'] }}</h2>
                     <p class="text-gray-600 mt-1 text-sm">{{ $pengurus['role'] }}</p>
                 </div>
-        
+
                 @endforeach
             </div>
         </section>
         <section class="w-full px-6 md:px-20 py-16 bg-gradient-to-b from-blue-500 to-blue-700 text-white">
             <h1 class="text-[30px] font-semibold text-center mb-10 uppercase">📍 Lokasi Kami</h1>
-        
+
             <div class="flex flex-col md:flex-row items-center justify-center gap-10">
                 <!-- Informasi Lokasi -->
                 <div class="text-center md:text-left bg-white p-6 rounded-lg shadow-lg text-gray-800 w-full md:w-1/3">
@@ -173,10 +173,10 @@
                         <span>Denpasar, Bali</span>
                     </div>
                 </div>
-        
+
                 <!-- Peta Lokasi -->
                 <div class="w-full md:w-[500px] h-[300px] overflow-hidden rounded-lg shadow-xl hover:scale-105 transition-transform duration-300">
-                    <iframe 
+                    <iframe
                         class="w-full h-full rounded-lg"
                         frameborder="0"
                         style="border:0"
@@ -188,34 +188,38 @@
                 </div>
             </div>
         </section>
-        
-        
-        
+
+
+
         <section class="w-full px-6 md:px-20 py-16 ">
             <h1 class="text-[30px] font-semibold text-center mb-10 uppercase">Galeri Kegiatan</h1>
-        
+
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 @foreach ([
                     asset('img/IMG_9353.JPG'),
                     asset('img/ke1.jpeg'),
-                    asset('img/ke2.jpeg'),
-                    asset('img/ke3.jpeg'),
-                    asset('img/ke4.jpeg'),
                     asset('img/ke5.jpeg'),
-                    asset('img/ke6.jpeg'),
-                    asset('img/ke7.jpeg'),
+                    asset('img/ke11.jpeg'),
+                    asset('img/ke8.jpeg'),
+                    asset('img/ke9.jpeg'),
+                    asset('img/ke10.jpeg'),
+                    asset('img/ke12.jpeg'),
+                    asset('img/ke13.jpeg'),
+                    asset('img/ke14.jpeg'),
+                    asset('img/ke15.jpeg'),
+                    asset('img/ke16.jpeg'),
                 ] as $image)
-        
+
                 <div class="relative group cursor-pointer" onclick="openModal('{{ $image }}')">
                     <img src="{{ $image }}" alt="Kegiatan" class="w-full h-[220px] object-cover rounded-lg shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl">
                     <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center rounded-lg">
                         <span class="text-white text-lg font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">Lihat Foto</span>
                     </div>
                 </div>
-        
+
                 @endforeach
             </div>
-        
+
             <!-- Lightbox Modal -->
             <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden transition-opacity duration-300">
                 <div class="relative p-4 max-w-[90vw] max-h-[80vh]">
@@ -224,7 +228,7 @@
                 </div>
             </div>
         </section>
-        
+
         {{-- <section>
             <div class="w-full text-white text-[20px] bg-blue-700 min-h-[200px] flex gap-5 items-center justify-center">
                 <div class="w-[80%] flex items-center gap-5 justify-center h-max">
@@ -237,7 +241,7 @@
                         <p class="text-[16px]">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat tempora reprehenderit mollitia aliquam aperiam pariatur saepe consequatur ratione ea maxime, voluptate ullam neque odio iste doloribus vitae deserunt quis libero!</p>
                     </div>
                 </div>
-                
+
             </div>
     </section> --}}
     {{-- <footer class="w-full bg-blue-800 text-white py-10">
@@ -250,7 +254,7 @@
                         BTW Academy adalah lembaga pelatihan terbaik yang berfokus pada persiapan tes akademik dan kedinasan.
                     </p>
                 </div>
-    
+
                 <!-- Navigasi -->
                 <div class="w-full md:w-1/3">
                     <h3 class="text-lg font-semibold mb-3">Navigasi</h3>
@@ -261,7 +265,7 @@
                         <li><a href="#" class="hover:text-gray-300 transition">Kontak</a></li>
                     </ul>
                 </div>
-    
+
                 <!-- Sosial Media -->
                 <div class="w-full md:w-1/3">
                     <h3 class="text-lg font-semibold mb-3">Ikuti Kami</h3>
@@ -284,7 +288,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="border-t border-gray-700 mt-8 pt-4 text-center text-gray-300">
                 <p>© 2025 BTW Academy. All Rights Reserved.</p>
             </div>
@@ -296,8 +300,8 @@
             <p class="text-sm text-gray-300">© 2025 BTW Academy. All Rights Reserved.</p>
         </div>
     </footer>
-    
-    
+
+
     <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
     <script>
         const menuBtn = document.getElementById('menu-btn');
@@ -324,10 +328,10 @@
               dragFree: true,
             });
           };
-      
+
           // Initial Embla setup
           let embla = initializeEmbla(window.matchMedia('(max-width: 640px)').matches ? 'start' : 'center');
-      
+
           // Listen for screen size changes
           const mediaQuery = window.matchMedia('(max-width: 640px)');
           mediaQuery.addEventListener('change', (event) => {
@@ -342,14 +346,14 @@
             const popupModal = document.getElementById('popup-modal');
             const closePopup = document.getElementById('close-popup');
             const closeButton = document.getElementById('close-button');
-    
+
             // Show the modal with animation
             popupModal.classList.remove('hidden');
             setTimeout(() => {
                 popupModal.classList.add('opacity-100');
                 popupModal.querySelector('div').classList.add('scale-100');
             }, 100);
-    
+
             // Function to close modal
             function closeModal() {
                 popupModal.classList.remove('opacity-100');
@@ -359,7 +363,7 @@
                 }, 300);
             }
 
-            
+
             // Close the modal when buttons are clicked
             closePopup.addEventListener('click', closeModal);
             closeButton.addEventListener('click', closeModal);
@@ -376,7 +380,7 @@
                 document.getElementById('modal').classList.add('opacity-100');
             }, 50);
         }
-    
+
         function closeModal() {
             document.getElementById('modal').classList.remove('opacity-100');
             setTimeout(() => {
@@ -388,21 +392,21 @@
         document.addEventListener("DOMContentLoaded", function () {
             let pengumumanData = @json($pengumuman);
             let currentIndex = 0; // Set ke indeks pertama (pengumuman terbaru)
-    
+
             const popup = document.getElementById("popup-modal");
             const closePopup = document.getElementById("close-popup");
             const closeButton = document.getElementById("close-button");
             const pengumumanText = document.getElementById("pengumuman-text");
             const prevButton = document.getElementById("prev-button");
             const nextButton = document.getElementById("next-button");
-    
+
             // Fungsi untuk memperbarui teks pengumuman
             function updatePengumuman() {
                 pengumumanText.textContent = pengumumanData[currentIndex]?.deskripsi ?? "Tidak ada pengumuman.";
                 prevButton.disabled = currentIndex === pengumumanData.length - 1;
                 nextButton.disabled = currentIndex === 0;
             }
-    
+
             // Event tombol sebelumnya (ke pengumuman lama)
             prevButton.addEventListener("click", function () {
                 if (currentIndex < pengumumanData.length - 1) {
@@ -410,7 +414,7 @@
                     updatePengumuman();
                 }
             });
-    
+
             // Event tombol selanjutnya (kembali ke pengumuman baru)
             nextButton.addEventListener("click", function () {
                 if (currentIndex > 0) {
@@ -418,7 +422,7 @@
                     updatePengumuman();
                 }
             });
-    
+
             // Event untuk menutup popup
             closePopup.addEventListener("click", function () {
                 popup.classList.add("hidden");
@@ -426,12 +430,12 @@
             closeButton.addEventListener("click", function () {
                 popup.classList.add("hidden");
             });
-    
+
             // Tampilkan popup secara otomatis dengan pengumuman terbaru
             popup.classList.remove("hidden");
             updatePengumuman();
         });
     </script>
-    
+
 </body>
 </html>
