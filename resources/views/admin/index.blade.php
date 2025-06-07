@@ -54,9 +54,9 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mb-1">Jumlah Inventaris Barang</p>
+                  <p class="mb-1">Jumlah Data Inventaris Barang</p>
                   <h4 class="card-title mb-3">{{$jumlahInventaris}} Barang</h4>
-                  <a href="{{route('admin.inventaris.index')}}" class="text-cyan-600"><u>lihat data</u></a>
+                  <a href="{{route('admin.inventaris.index')}}" class="text-cyan-600"><u>lihat Data</u></a>
                 </div>
               </div>
             </div>
@@ -86,9 +86,9 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mb-1">Jumlah Data <br> Anggota</p>
+                  <p class="mb-1">Jumlah Data Anggota</p>
                   <h4 class="card-title mb-3">{{$jumlahAnggota}} Anggota</h4>
-                  <a href="{{route('admin.anggota.index')}}" class="text-cyan-600"><u>lihat data anggota</u></a>
+                  <a href="{{route('admin.anggota.index')}}" class="text-cyan-600"><u>lihat Data</u></a>
                 </div>
               </div>
             </div>
@@ -160,10 +160,10 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mb-1">Jumlah Acara</p>
+                  <p class="mb-1">Jumlah Data Acara</p>
                   <h4 class="card-title mb-3">{{$jumlahAcara}} Acara</h4>
                   <small class="text-danger fw-medium"
-                    ><a href="{{route('admin.acara.index')}}" class="text-cyan-600"><u>lihat data acara</u></a></small
+                    ><a href="{{route('admin.acara.index')}}" class="text-cyan-600"><u>lihat Data </u></a></small
                   >
                 </div>
               </div>
@@ -191,10 +191,10 @@
                       </div>
                     </div>
                   </div>
-                  <p class="mb-1">Jumlah Data <br> Peminjaman</p>
+                  <p class="mb-1">Jumlah Data Peminjaman</p>
                   <h4 class="card-title mb-3">{{$jumlahPeminjaman}} Peminjaman</h4>
                   <small class="text-success fw-medium"
-                    ><a href="{{route('admin.peminjaman.index')}}" class="text-cyan-600"><u>lihat data anggota</u></a></small
+                    ><a href="{{route('admin.peminjaman.index')}}" class="text-cyan-600"><u>lihat Data</u></a></small
                   >
                 </div>
               </div>
