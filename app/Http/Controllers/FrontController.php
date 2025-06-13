@@ -43,13 +43,11 @@ class FrontController extends Controller
     return view('front.absensi', compact('dataAbsensi', 'inventarisBarangs'));
     }
 
-/*************  ✨ Windsurf Command ⭐  *************/
     /**
      * Halaman yang menampilkan daftar pengumuman dan inventaris barang yang tersedia.
      *
      * @return \Illuminate\Http\Response
      */
-/*******  3b9d9f45-68b6-431e-ac7c-3c15e4b49ebc  *******/
     public function barang(){
         $pengumuman = Pengumuman::orderByDesc('id')->get();
         $inventarisBarangs = InventarisBarang::orderByDesc('id')->get();
@@ -57,17 +55,6 @@ class FrontController extends Controller
         return view('front.barang', compact('pengumuman', 'inventarisBarangs'));
     }
 
-/*************  ✨ Windsurf Command ⭐  *************/
-/**
- * Display a list of all pengumuman.
- *
- * Retrieves all records from the Pengumuman model and returns 
- * a view displaying them.
- *
- * @return \Illuminate\View\View
- */
-
-/*******  1d40cf63-ce1b-4320-9079-222296a6d9ef  *******/
     public function pengumuman(){
         $pengumuman = Pengumuman::all();
     
