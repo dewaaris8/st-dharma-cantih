@@ -11,11 +11,12 @@ class InventarisBarangController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $barang = InventarisBarang::all();
-        return view('inventaris.index', compact('barang'));
-    }
+public function index()
+{
+    $barang = InventarisBarang::orderBy('nama_barang')->paginate(10);
+    return view('inventaris.index', compact('barang'));
+}
+
 
     public function cetakPdf()
 {

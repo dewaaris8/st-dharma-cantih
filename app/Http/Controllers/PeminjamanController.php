@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class PeminjamanController extends Controller
 {
     public function index()
-    {
-        $peminjaman = Peminjaman::with('inventaris')->get();
-        return view('peminjaman.index', compact('peminjaman'));
-    }
+{
+    $peminjaman = Peminjaman::with('inventaris')->paginate(10);
+    return view('peminjaman.index', compact('peminjaman'));
+}
+
 
     public function create()
     {

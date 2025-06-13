@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Acara;
 
 class AcaraController extends Controller {
-    public function index() {
-        $acara = Acara::all();
-        return view('acara.index', compact('acara'));
-    }
+    public function index()
+{
+    $acara = Acara::orderBy('tanggal', 'desc')->paginate(10);
+    return view('acara.index', compact('acara'));
+}
+
 
 
     public function create() {

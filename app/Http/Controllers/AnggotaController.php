@@ -4,28 +4,59 @@ namespace App\Http\Controllers;
 use App\Models\Anggota;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class AnggotaController extends Controller
 {
-    public function index(Request $request)
+   
+
+public function index(Request $request)
 {
+    $search = $request->input('search');
+
+    // Ambil semua data yang cocok
     $query = Anggota::query();
 
-    if ($request->has('search')) {
-        $search = $request->input('search');
-        $query->where('nama', 'LIKE', "%$search%")
+    if ($search) {
+        $query->where(function ($q) use ($search) {
+            $q->where('nama', 'LIKE', "%$search%")
               ->orWhere('email', 'LIKE', "%$search%")
               ->orWhere('daerah', 'LIKE', "%$search%");
+        });
     }
 
-    $anggota = $query->paginate(10);
+    $query->orderBy('daerah')->orderBy('nama');
 
-    return view('anggota.index', compact('anggota'));
+    $allAnggota = $query->get();
+
+    // Kelompokkan berdasarkan daerah
+    $grouped = $allAnggota->groupBy('daerah');
+
+    // Flatten hasil agar bisa dipaginasi
+    $flattened = $grouped->flatten(1);
+
+    // Manual pagination
+    $perPage = 10;
+    $currentPage = LengthAwarePaginator::resolveCurrentPage();
+    $currentItems = $flattened->slice(($currentPage - 1) * $perPage, $perPage)->values();
+
+    $paginated = new LengthAwarePaginator(
+        $currentItems,
+        $flattened->count(),
+        $perPage,
+        $currentPage,
+        ['path' => $request->url(), 'query' => $request->query()]
+    );
+
+    // Group ulang item yang sudah dipaginasi
+    $groupedPaginated = $currentItems->groupBy('daerah');
+
+    return view('anggota.index', [
+        'groupedAnggota' => $groupedPaginated,
+        'anggota' => $paginated,
+    ]);
 }
-
-    
-
-
     public function cetakPdf()
     {
         $dataAnggota = Anggota::all();

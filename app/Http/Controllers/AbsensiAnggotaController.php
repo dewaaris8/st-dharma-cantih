@@ -33,6 +33,7 @@ class AbsensiAnggotaController extends Controller
         $anggota = Anggota::whereDoesntHave('absensi', function ($query) use ($acara) {
             $query->where('acara_id', $acara->id);
         })->get();
+
         return view('absensi.create', compact('acara', 'anggota'));
     }
 

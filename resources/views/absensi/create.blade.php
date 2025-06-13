@@ -25,26 +25,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($anggota as $a)
-                    <tr class="border-b">
-                        <td class="p-3 border">{{ $a->nama }}</td>
-                        <td class="p-3 border">
-                            <div class="relative">
-                                <select name="absensi[{{ $a->id }}][status]" class="block w-full appearance-none border rounded-md py-2 pl-3 pr-10 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                                    <option value="Hadir">Hadir</option>
-                                    <option value="Tidak Hadir">Tidak Hadir</option>
-                                    <option value="Sakit">Sakit</option>
-                                </select>
-                                <!-- Ikon dropdown -->
-                                <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                            <input type="hidden" name="absensi[{{ $a->id }}][anggota_id]" value="{{ $a->id }}">
-                        </td>
-                    </tr>
+                    @foreach($anggota->groupBy('daerah') as $daerah => $group)
+                        <tr class="bg-gray-200">
+                            <td colspan="2" class="p-3 font-bold text-blue-700">{{ $daerah }}</td>
+                        </tr>
+                        @foreach($group as $a)
+                            <tr class="border-b">
+                                <td class="p-3 border">{{ $a->nama }}</td>
+                                <td class="p-3 border">
+                                    <div class="flex gap-4">
+                                        @php
+                                            $statuses = ['Hadir', 'Tidak Hadir', 'Sakit'];
+                                        @endphp
+                                        @foreach($statuses as $status)
+                                            <label class="inline-flex items-center">
+                                                <input type="radio" name="absensi[{{ $a->id }}][status]" value="{{ $status }}"
+                                                    class="form-radio text-blue-500"
+                                                    {{ $status == 'Hadir' ? 'checked' : '' }} required>
+                                                <span class="ml-2">{{ $status }}</span>
+                                            </label>
+                                        @endforeach
+                                    </div>
+                                    <input type="hidden" name="absensi[{{ $a->id }}][anggota_id]" value="{{ $a->id }}">
+                                </td>
+                            </tr>
+                        @endforeach
                     @endforeach
                 </tbody>
             </table>
