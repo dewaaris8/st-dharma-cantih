@@ -44,7 +44,7 @@
                 <table class="min-w-full bg-white border border-gray-200 shadow-md rounded-lg">
                     <thead class="bg-blue-600 text-white">
                         <tr>
-                            <th class="px-4 py-3 text-left">#</th>
+                            <th class="px-4 py-3 text-left">No</th>
                             <th class="px-4 py-3 text-left">Judul</th>
                             <th class="px-4 py-3 text-left">Deskripsi</th>
                         </tr>

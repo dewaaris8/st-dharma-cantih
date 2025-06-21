@@ -11,6 +11,7 @@
                 <h5 class="mb-0">Detail Presensi untuk Acara: {{ $acara->nama }}</h5>
                 <a href="{{ route('admin.absensi.edit', $acara->id) }}" class="btn btn-secondary">Edit Presensi</a>
             </div>
+
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
@@ -37,7 +38,23 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $item->anggota->nama }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_{{ $item->id }}" value="Hadir"
+                                                       {{ $item->status === 'Hadir' ? 'checked' : '' }} disabled>
+                                                <label class="form-check-label">Hadir</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_{{ $item->id }}" value="Tidak Hadir"
+                                                       {{ $item->status === 'Tidak Hadir' ? 'checked' : '' }} disabled>
+                                                <label class="form-check-label">Tidak Hadir</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_{{ $item->id }}" value="Sakit"
+                                                       {{ $item->status === 'Sakit' ? 'checked' : '' }} disabled>
+                                                <label class="form-check-label">Sakit</label>
+                                            </div>
+                                        </td>
                                         <td>{{ $item->tanggal }}</td>
                                         <td>
                                             <a href="{{ route('admin.absensi.editSingle', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>

@@ -66,7 +66,11 @@
 
     <nav class="bg-blue-600 font-poppins rounded-b-xl p-4">
         <div class="container px-20 mx-auto flex justify-between items-center">
-            <a href="{{ route('home') }}" class="text-white text-xl font-bold"><img class="w-16 h-16" src="{{ asset('img/stdc.png') }}" alt=""></a>
+            <div class="flex items-center gap-[20px]">
+                <a href="{{ route('home') }}" class="text-white text-xl font-bold"><img class="w-16 h-16" src="{{ asset('img/stdc.png') }}" alt=""></a>
+                <h1 class="text-white text-xl font-bold">STDC</h1>
+            </div>
+            
             <button id="menu-btn" class="block md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>

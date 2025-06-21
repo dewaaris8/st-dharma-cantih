@@ -23,7 +23,7 @@
                 <table class="min-w-full bg-white border border-gray-200 rounded-lg">
                     <thead>
                         <tr class="bg-gray-100 border-b">
-                            <th class="px-4 py-3 text-left">#</th>
+                            <th class="px-4 py-3 text-left">No</th>
                             <th class="px-4 py-3 text-left">Judul</th>
                             <th class="px-4 py-3 text-left">Deskripsi</th>
                             <th class="px-4 py-3 text-left">Aksi</th>

@@ -11,9 +11,10 @@
 <body>
     <nav class="bg-blue-600 font-poppins rounded-b-xl p-4">
         <div class="container px-20 mx-auto flex justify-between items-center">
-            <a href="{{ route('home') }}" class="text-white text-xl font-bold">
-                <img class="w-10 h-10" src="{{ asset('img/stdc.png') }}" alt="">
-            </a>
+            <div class="flex items-center gap-[20px]">
+                <a href="{{ route('home') }}" class="text-white text-xl font-bold"><img class="w-16 h-16" src="{{ asset('img/stdc.png') }}" alt=""></a>
+                <h1 class="text-white text-xl font-bold">STDC</h1>
+            </div>
             <button id="menu-btn" class="block md:hidden text-white focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -84,7 +85,7 @@
                         </table>
 
                         @if(count($anggotaList) > 5)
-                            <div class="text-center mt-4">
+                            <div class="text-center w-full my-4">
                                 <button data-target="table-body-{{ $loop->index }}"
                                         class="load-more bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                     Load More

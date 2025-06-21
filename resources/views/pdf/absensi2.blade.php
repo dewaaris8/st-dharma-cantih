@@ -24,7 +24,6 @@
                     <th>No</th>
                     <th>Nama Anggota</th>
                     <th>Status Kehadiran</th>
-                    <th>Tanggal</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,7 +32,6 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $item->anggota->nama }}</td>
                         <td>{{ $item->status }}</td>
-                        <td>{{ $item->tanggal }}</td>
                     </tr>
                 @endforeach
             </tbody>

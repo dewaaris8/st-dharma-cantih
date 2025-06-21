@@ -11,19 +11,28 @@
         @method('PUT')
 
         <div class="mb-4">
-            <label for="status" class="block text-sm font-medium text-gray-700">Status Kehadiran:</label>
-            <div class="relative mt-1">
-                <select name="status" id="status" class="block w-full appearance-none border border-gray-300 rounded-md py-2 pl-3 pr-10 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="Hadir" {{ $absensi->status == 'Hadir' ? 'selected' : '' }}>Hadir</option>
-                    <option value="Tidak Hadir" {{ $absensi->status == 'Tidak Hadir' ? 'selected' : '' }}>Tidak Hadir</option>
-                    <option value="Sakit" {{ $absensi->status == 'Sakit' ? 'selected' : '' }}>Sakit</option>
-                </select>
-                <!-- Ikon dropdown -->
-                <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Status Kehadiran:</label>
+            <div class="flex flex-col md:flex-row gap-4">
+                <label class="inline-flex items-center">
+                    <input type="radio" name="status" value="Hadir"
+                           {{ $absensi->status === 'Hadir' ? 'checked' : '' }}
+                           class="form-radio text-green-600">
+                    <span class="ml-2">Hadir</span>
+                </label>
+
+                <label class="inline-flex items-center">
+                    <input type="radio" name="status" value="Tidak Hadir"
+                           {{ $absensi->status === 'Tidak Hadir' ? 'checked' : '' }}
+                           class="form-radio text-red-600">
+                    <span class="ml-2">Tidak Hadir</span>
+                </label>
+
+                <label class="inline-flex items-center">
+                    <input type="radio" name="status" value="Sakit"
+                           {{ $absensi->status === 'Sakit' ? 'checked' : '' }}
+                           class="form-radio text-yellow-500">
+                    <span class="ml-2">Sakit</span>
+                </label>
             </div>
         </div>
 
