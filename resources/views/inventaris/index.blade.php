@@ -51,14 +51,16 @@
 
         {{-- Pagination --}}
         @if ($barang->hasPages())
-    <div class="d-flex justify-content-between align-items-center mt-3 px-3 py-2 bg-light">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mt-3 px-3 py-3 bg-light gap-2">
+        {{-- Info Jumlah --}}
         <p class="mb-0 text-muted">
             Menampilkan {{ $barang->firstItem() }} - {{ $barang->lastItem() }} dari {{ $barang->total() }} barang
         </p>
 
+        {{-- Navigasi Halaman --}}
         <nav>
-            <ul class="pagination mb-0">
-                {{-- Previous Page Link --}}
+            <ul class="pagination flex-wrap mb-0">
+                {{-- Tombol Sebelumnya --}}
                 @if ($barang->onFirstPage())
                     <li class="page-item disabled">
                         <span class="page-link">«</span>
@@ -69,18 +71,20 @@
                     </li>
                 @endif
 
-                {{-- Pagination Elements --}}
+                {{-- Nomor Halaman --}}
                 @foreach ($barang->links()->elements[0] as $page => $url)
                     @if ($page == $barang->currentPage())
                         <li class="page-item active" aria-current="page">
                             <span class="page-link">{{ $page }}</span>
                         </li>
                     @else
-                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                        </li>
                     @endif
                 @endforeach
 
-                {{-- Next Page Link --}}
+                {{-- Tombol Selanjutnya --}}
                 @if ($barang->hasMorePages())
                     <li class="page-item">
                         <a class="page-link" href="{{ $barang->nextPageUrl() }}" rel="next">»</a>
@@ -94,6 +98,7 @@
         </nav>
     </div>
 @endif
+
 
     </div>
 @endsection
