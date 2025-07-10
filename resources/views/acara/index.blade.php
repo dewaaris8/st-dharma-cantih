@@ -9,9 +9,9 @@
             <a href="{{ route('admin.acara.create') }}" class="btn btn-primary mb-3">Tambah Acara</a>
         </div>
 
-        <div class="table-responsive w-full text-nowrap">
+        <div class="table-responsive  text-nowrap">
             @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <div class="alert w-full alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
