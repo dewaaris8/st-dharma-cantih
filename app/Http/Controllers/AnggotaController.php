@@ -60,7 +60,7 @@ public function index(Request $request)
 public function cetakPdf()
 {
     $dataAnggota = Anggota::all();
-    $pdf = \PDF::loadView('pdf.anggota', compact('dataAnggota'))
+    $pdf = FacadePdf::loadView('pdf.anggota', compact('dataAnggota'))
                ->setPaper('a4', 'landscape');
     
     return $pdf->download('data_anggota.pdf');
