@@ -84,33 +84,37 @@
 
     <!-- Navigasi Pagination -->
     @if ($anggota->hasPages())
-        <div class="flex justify-between items-center px-6 py-4 bg-gray-100">
-            <p class="text-gray-600">
-                Menampilkan {{ $anggota->firstItem() }} - {{ $anggota->lastItem() }} dari {{ $anggota->total() }} anggota
-            </p>
+    <div class="flex flex-col md:flex-row justify-between items-center px-6 py-4 bg-gray-100 space-y-2 md:space-y-0">
+        <p class="text-gray-600 text-sm">
+            Menampilkan {{ $anggota->firstItem() }} - {{ $anggota->lastItem() }} dari {{ $anggota->total() }} anggota
+        </p>
 
-            <div class="flex space-x-2">
-                @if ($anggota->onFirstPage())
-                    <span class="px-3 py-1 text-gray-400 bg-gray-200 rounded-md">Sebelumnya</span>
+        <div class="flex flex-wrap gap-1">
+            {{-- Tombol Sebelumnya --}}
+            @if ($anggota->onFirstPage())
+                <span class="px-3 py-1 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed">Sebelumnya</span>
+            @else
+                <a href="{{ $anggota->previousPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Sebelumnya</a>
+            @endif
+
+            {{-- Nomor Halaman --}}
+            @foreach ($anggota->getUrlRange(1, $anggota->lastPage()) as $page => $url)
+                @if ($page == $anggota->currentPage())
+                    <span class="px-3 py-1 bg-blue-500 text-white rounded-md">{{ $page }}</span>
                 @else
-                    <a href="{{ $anggota->previousPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Sebelumnya</a>
+                    <a href="{{ $url }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">{{ $page }}</a>
                 @endif
+            @endforeach
 
-                @foreach ($anggota->getUrlRange(1, $anggota->lastPage()) as $page => $url)
-                    @if ($page == $anggota->currentPage())
-                        <span class="px-3 py-1 bg-blue-500 text-white rounded-md">{{ $page }}</span>
-                    @else
-                        <a href="{{ $url }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">{{ $page }}</a>
-                    @endif
-                @endforeach
-
-                @if ($anggota->hasMorePages())
-                    <a href="{{ $anggota->nextPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Selanjutnya</a>
-                @else
-                    <span class="px-3 py-1 text-gray-400 bg-gray-200 rounded-md">Selanjutnya</span>
-                @endif
-            </div>
+            {{-- Tombol Selanjutnya --}}
+            @if ($anggota->hasMorePages())
+                <a href="{{ $anggota->nextPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Selanjutnya</a>
+            @else
+                <span class="px-3 py-1 text-gray-400 bg-gray-200 rounded-md cursor-not-allowed">Selanjutnya</span>
+            @endif
         </div>
-    @endif
+    </div>
+@endif
+
 </div>
 @endsection
