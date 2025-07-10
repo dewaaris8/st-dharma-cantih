@@ -51,15 +51,49 @@
 
         {{-- Pagination --}}
         @if ($barang->hasPages())
-            <div class="d-flex justify-content-between align-items-center mt-3 px-3 py-2 bg-light">
-                <p class="mb-0 text-muted">
-                    Menampilkan {{ $barang->firstItem() }} - {{ $barang->lastItem() }} dari {{ $barang->total() }} barang
-                </p>
+    <div class="d-flex justify-content-between align-items-center mt-3 px-3 py-2 bg-light">
+        <p class="mb-0 text-muted">
+            Menampilkan {{ $barang->firstItem() }} - {{ $barang->lastItem() }} dari {{ $barang->total() }} barang
+        </p>
 
-                <div class="d-flex gap-1">
-                    {{ $barang->links() }}
-                </div>
-            </div>
-        @endif
+        <nav>
+            <ul class="pagination mb-0">
+                {{-- Previous Page Link --}}
+                @if ($barang->onFirstPage())
+                    <li class="page-item disabled">
+                        <span class="page-link">«</span>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $barang->previousPageUrl() }}" rel="prev">«</a>
+                    </li>
+                @endif
+
+                {{-- Pagination Elements --}}
+                @foreach ($barang->links()->elements[0] as $page => $url)
+                    @if ($page == $barang->currentPage())
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">{{ $page }}</span>
+                        </li>
+                    @else
+                        <li class="page-item"><a class="page-link" href="{{ $url }}">{{ $page }}</a></li>
+                    @endif
+                @endforeach
+
+                {{-- Next Page Link --}}
+                @if ($barang->hasMorePages())
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $barang->nextPageUrl() }}" rel="next">»</a>
+                    </li>
+                @else
+                    <li class="page-item disabled">
+                        <span class="page-link">»</span>
+                    </li>
+                @endif
+            </ul>
+        </nav>
+    </div>
+@endif
+
     </div>
 @endsection
