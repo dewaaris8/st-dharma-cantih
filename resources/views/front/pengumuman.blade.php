@@ -31,7 +31,7 @@
                 <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
             </ul>
         </div>
-        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-1/2 bg-blue-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col space-y-4 p-4 md:hidden">
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-1/2 bg-blue-700 text-white transform z-50 translate-x-full transition-transform duration-300 ease-in-out flex flex-col space-y-4 p-4 md:hidden">
             <button id="close-menu" class="self-end text-white text-2xl">&times;</button>
             <a href='{{ route('home') }}' class="hover:text-gray-300">Home</a>
             <a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a>

@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('img/stdc.png') }}" />
 </head>
 <body>
-    <nav class="bg-blue-600 font-poppins rounded-b-xl p-4">
+    <nav class="bg-blue-600 font-poppins z-50 rounded-b-xl p-4">
         <div class="container px-20 mx-auto flex justify-between items-center">
             <div class="flex items-center gap-[20px]">
                 <a href="{{ route('home') }}" class="text-white text-xl font-bold"><img class="w-16 h-16" src="{{ asset('img/stdc.png') }}" alt=""></a>
@@ -30,12 +30,13 @@
             </ul>
         </div>
         <div id="mobile-menu"
-             class="fixed top-0 right-0 h-full w-1/2 bg-blue-700 text-white transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col space-y-4 p-4 md:hidden">
+             class="fixed top-0 right-0 h-full w-1/2 bg-blue-700 text-white transform z-50 translate-x-full transition-transform duration-300 ease-in-out flex flex-col space-y-4 p-4 md:hidden">
             <button id="close-menu" class="self-end text-white text-2xl">&times;</button>
-            <a href="#" class="block py-2">Home</a>
-            <a href="#" class="block py-2">About</a>
-            <a href="#" class="block py-2">Services</a>
-            <a href="#" class="block py-2">Contact</a>
+            <li><a href='{{ route('home') }}' class="hover:text-gray-300">Home</a></li>
+                <li><a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a></li>
+                <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Presensi</a></li>
+                <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Inventaris</a></li>
+                <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
         </div>
     </nav>
 
