@@ -46,10 +46,6 @@ Route::get('/inventaris', [FrontController::class, 'barang'])->name('barang');
 Route::get('/pengumuman', [FrontController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/inventaris/pdf', [InventarisBarangController::class, 'cetakPdf'])->name('inventaris.pdf');
 Route::get('/anggota/pdf', [AnggotaController::class, 'cetakPdf'])->name('anggota.pdf');
-Route::get('/run-role-seeder', function () {
-    Artisan::call('db:seed', ['--class' => 'RolePermissionSeeder']);
-    return 'RolePermissionSeeder executed!';
-});
 
 
 Route::middleware('auth')->group(function () {
