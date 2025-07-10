@@ -41,7 +41,7 @@
                                             <label class="inline-flex items-center">
                                                 <input type="radio" name="absensi[{{ $a->id }}][status]" value="{{ $status }}"
                                                     class="form-radio text-blue-500"
-                                                    {{ $status == 'Hadir' ? 'checked' : '' }} required>
+                                                    {{ $status == 'Tidak Hadir' ? 'checked' : '' }} required>
                                                 <span class="ml-2">{{ $status }}</span>
                                             </label>
                                         @endforeach
