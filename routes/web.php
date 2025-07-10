@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('auth')->group(function () {
+// Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::middleware('can:manage categories')->group(function () {
             Route::resource('anggota', AnggotaController::class)->parameters([
@@ -82,7 +82,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('pengumuman', PengumumanController::class);
             Route::resource('users', UserController::class);
             Route::get('/admin/absensi/preview/{acara}', [AbsensiAnggotaController::class, 'previewPDF'])->name('absensi.previewPDF');
-Route::get('/admin/absensi/download/{acara}', [AbsensiAnggotaController::class, 'downloadPDF'])->name('absensi.downloadPDF');
+            Route::get('/admin/absensi/download/{acara}', [AbsensiAnggotaController::class, 'downloadPDF'])->name('absensi.downloadPDF');
 
 
             // Route::get('/absensi/pdf/{daerah}', [AbsensiAnggotaController::class, 'cetakPDF'])->name('absensi.pdf');
@@ -90,7 +90,7 @@ Route::get('/admin/absensi/download/{acara}', [AbsensiAnggotaController::class, 
 
         });
     });
-});
+// });
 
 
 require __DIR__.'/auth.php';
