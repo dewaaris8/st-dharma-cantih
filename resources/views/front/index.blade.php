@@ -94,55 +94,58 @@
         </div>
     </nav>
     <section class="container font-poppins flex flex-col gap-10 mx-auto  h-max">
-        <section>
-    <div class="w-full mt-10 flex flex-col md:flex-row h-auto md:h-[500px] items-center justify-between">
-        <div class="flex-1 px-4 md:px-20 flex flex-col gap-4 text-center md:text-left mb-6 md:mb-0">
-            <h3 class="text-[20px] md:text-[22px] font-poppins font-semibold">SELAMAT DATANG</h3>
-            <h1 class="text-[24px] md:text-[30px] font-semibold">ST. DHARMA CANTIH</h1>
-            <p class="w-full md:w-[80%] text-[14px] md:text-[16px]">
-                ST. Dharma Cantih merupakan organisasi kemasyarakatan yang beranggotakan pemuda dan pemudi sebagai sarana pengembangan generasi muda untuk menumbuhkan kesadaran dan juga tanggung jawab sosial di Banjar Pande Pedungan.
-            </p>
-            <a href="#lihat">
-                <div class="px-4 py-2 text-[13px] mx-auto md:mx-0 w-max bg-blue-500 rounded-xl text-white">
-                    Lihat Selengkapnya
-                </div>
-            </a>
+<section>
+  <div class="w-full mt-10 flex flex-col md:flex-row h-auto md:h-[500px] items-center justify-between">
+    <div class="flex-1 px-4 md:px-20 flex flex-col gap-4 text-center md:text-left mb-6 md:mb-0">
+      <h3 class="text-[20px] md:text-[22px] font-poppins font-semibold">SELAMAT DATANG</h3>
+      <h1 class="text-[24px] md:text-[30px] font-semibold">ST. DHARMA CANTIH</h1>
+      <p class="w-full md:w-[80%] text-[14px] md:text-[16px]">
+        ST. Dharma Cantih merupakan organisasi kemasyarakatan yang beranggotakan pemuda dan pemudi sebagai sarana pengembangan generasi muda untuk menumbuhkan kesadaran dan juga tanggung jawab sosial di Banjar Pande Pedungan.
+      </p>
+      <a href="#lihat">
+        <div class="px-4 py-2 text-[13px] mx-auto md:mx-0 w-max bg-blue-500 rounded-xl text-white">
+          Lihat Selengkapnya
         </div>
-        <div class="flex-1 w-full h-[300px] md:h-full rounded-t-xl md:rounded-l-xl overflow-hidden">
-            <img class="w-full h-full object-cover" src="{{ asset('img/IMG_9353.JPG') }}" alt="">
-        </div>
+      </a>
     </div>
+    <div class="flex-1 w-full h-[250px] md:h-full rounded-t-xl md:rounded-l-xl overflow-hidden">
+      <img class="w-full h-full object-cover" src="{{ asset('img/IMG_9353.JPG') }}" alt="">
+    </div>
+  </div>
 </section>
 
 <section>
-    <div class="w-full flex flex-col md:flex-row-reverse h-auto md:h-[500px] relative items-center justify-between mt-10">
-        <div class="flex-1 px-4 md:pl-20 md:pr-5 flex flex-col gap-4 text-center md:text-left z-10">
-            <h3 id="lihat" class="text-[24px] md:text-[30px] font-poppins font-semibold">SEJARAH</h3>
-            <h1 class="text-[24px] md:text-[30px] font-semibold">ST. DHARMA CANTIH</h1>
-            <p class="w-full md:w-[80%] text-[14px] md:text-[16px]">
-                Sekeha Teruna Dharma Cantih atau STDC merupakan sebuah organisasi kepemudaan yang berada di lingkungan Banjar Pande Pedungan. Dimana organisasi ini sudah berdiri dari tahun 1936 dan sekarang memiliki anggota sebanyak 156 anggota yang dibagi menjadi 3 tempekan yaitu: kaje kangin marga, kaja kauh marga, dan delot marga.
-            </p>
-        </div>
-        <div class="flex-1 w-full relative mt-6 md:mt-0">
-            <!-- Blue background only visible in md+ -->
-            <div class="hidden md:block w-[60%] absolute left-0 bg-blue-500 h-[450px] rounded-r-xl"></div>
-            <!-- Carousel -->
-            <div class="overflow-x-auto w-full z-10 rounded-r-lg h-auto md:h-max px-4 md:px-0" id="embla">
-                <div class="flex gap-4">
-                    <div class="flex-[0_0_85%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_66%] h-[250px] md:h-[350px]">
-                        <img class="w-full h-full object-cover rounded-lg" src="{{ asset('img/ke1.JPG') }}" alt="">
-                    </div>
-                    <div class="flex-[0_0_85%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_66%] h-[250px] md:h-[350px]">
-                        <img class="w-full h-full object-cover rounded-lg" src="{{ asset('img/ke5.JPG') }}" alt="">
-                    </div>
-                    <div class="flex-[0_0_85%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_66%] h-[250px] md:h-[350px]">
-                        <img class="w-full h-full object-cover rounded-lg" src="{{ asset('img/ke7.JPG') }}" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="w-full flex flex-col md:flex-row-reverse h-auto md:h-[500px] relative items-center justify-between mt-10">
+    <div class="flex-1 px-4 md:pl-20 md:pr-5 flex flex-col gap-4 text-center md:text-left z-10">
+      <h3 id="lihat" class="text-[24px] md:text-[30px] font-poppins font-semibold">SEJARAH</h3>
+      <h1 class="text-[24px] md:text-[30px] font-semibold">ST. DHARMA CANTIH</h1>
+      <p class="w-full md:w-[80%] text-[14px] md:text-[16px]">
+        Sekeha Teruna Dharma Cantih atau STDC merupakan sebuah organisasi kepemudaan yang berada di lingkungan Banjar Pande Pedungan. Dimana organisasi ini sudah berdiri dari tahun 1936 dan sekarang memiliki anggota sebanyak 156 anggota yang dibagi menjadi 3 tempekan yaitu: kaje kangin marga, kaja kauh marga, dan delot marga.
+      </p>
     </div>
+
+    <div class="flex-1 w-full relative mt-6 md:mt-0 flex items-center justify-center md:justify-end">
+      <!-- Blue background hanya tampil di desktop -->
+      <div class="hidden md:block w-[60%] absolute left-0 bg-blue-500 h-[450px] rounded-r-xl"></div>
+
+      <!-- Embla Slider tetap -->
+      <div class="overflow-hidden w-full z-10 rounded-r-lg h-auto px-4 md:px-0" id="embla">
+        <div class="flex touch-pan-y gap-4">
+          <div class="flex-[0_0_85%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_66%] h-[250px] md:h-[350px] pr-4">
+            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('img/ke1.JPG') }}" alt="">
+          </div>
+          <div class="flex-[0_0_85%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_66%] h-[250px] md:h-[350px] pr-4">
+            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('img/ke5.JPG') }}" alt="">
+          </div>
+          <div class="flex-[0_0_85%] sm:flex-[0_0_70%] md:flex-[0_0_60%] lg:flex-[0_0_66%] h-[250px] md:h-[350px] pr-4">
+            <img class="w-full h-full object-cover rounded-lg" src="{{ asset('img/ke7.JPG') }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
         <section class="w-full px-6 md:px-20 py-16 ">
             <h1 class="text-[30px] font-semibold text-center mb-10">PENGURUS <br> ST DHARMA CANTIH</h1>
