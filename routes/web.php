@@ -10,6 +10,7 @@ use App\Http\Controllers\PeminjamanController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -45,6 +46,10 @@ Route::get('/inventaris', [FrontController::class, 'barang'])->name('barang');
 Route::get('/pengumuman', [FrontController::class, 'pengumuman'])->name('pengumuman');
 Route::get('/inventaris/pdf', [InventarisBarangController::class, 'cetakPdf'])->name('inventaris.pdf');
 Route::get('/anggota/pdf', [AnggotaController::class, 'cetakPdf'])->name('anggota.pdf');
+Route::get('/run-role-seeder', function () {
+    Artisan::call('db:seed', ['--class' => 'RolePermissionSeeder']);
+    return 'RolePermissionSeeder executed!';
+});
 
 
 Route::middleware('auth')->group(function () {
@@ -53,7 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::middleware('can:manage categories')->group(function () {
             Route::resource('anggota', AnggotaController::class)->parameters([
@@ -90,7 +95,7 @@ Route::middleware('auth')->group(function () {
 
         });
     });
-// });
+});
 
 
 require __DIR__.'/auth.php';
