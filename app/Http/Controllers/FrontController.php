@@ -63,19 +63,22 @@ class FrontController extends Controller
         )); 
     }
 
-    public function cetakPdf($daerah)
-    {
-        $anggotaList = Anggota::where('daerah', $daerah)
-            ->with(['absensi' => function ($query) {
-                $query->select('anggota_id')
-                    ->selectRaw("SUM(CASE WHEN status = 'hadir' THEN 1 ELSE 0 END) as total_hadir")
-                    ->selectRaw("SUM(CASE WHEN status = 'tidak hadir' THEN 1 ELSE 0 END) as total_tidak_hadir")
-                    ->selectRaw("SUM(CASE WHEN status = 'sakit' THEN 1 ELSE 0 END) as total_sakit")
-                    ->groupBy('anggota_id');
-            }])
-            ->get();
+public function cetakPdf($daerah)
+{
+    $anggotaList = Anggota::where('daerah', $daerah)
+        ->with(['absensi' => function ($query) {
+            $query->select('anggota_id')
+                ->selectRaw("SUM(CASE WHEN status = 'hadir' THEN 1 ELSE 0 END) as total_hadir")
+                ->selectRaw("SUM(CASE WHEN status = 'tidak hadir' THEN 1 ELSE 0 END) as total_tidak_hadir")
+                ->selectRaw("SUM(CASE WHEN status = 'sakit' THEN 1 ELSE 0 END) as total_sakit")
+                ->groupBy('anggota_id');
+        }])
+        ->get();
 
-        $pdf = FacadePdf::loadView('pdf.absensi', compact('anggotaList', 'daerah'));
-        return $pdf->download("absensi_{$daerah}.pdf");
-    }
+    $pdf = FacadePdf::loadView('pdf.absensi', compact('anggotaList', 'daerah'))
+        ->setPaper('a4', 'landscape');
+
+    return $pdf->download("absensi_{$daerah}.pdf");
+}
+
 }
