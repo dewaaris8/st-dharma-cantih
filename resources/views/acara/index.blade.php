@@ -8,14 +8,14 @@
             <h5 class="mb-0">Daftar Acara</h5>
             <a href="{{ route('admin.acara.create') }}" class="btn btn-primary mb-3">Tambah Acara</a>
         </div>
-
-        <div class="table-responsive  text-nowrap">
-            @if(session('success'))
+        @if(session('success'))
                 <div class="alert w-[100%] alert-success alert-dismissible fade show" role="alert">
                     {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+        <div class="table-responsive  text-nowrap">
+            
 
             <table class="table">
                 <thead>
