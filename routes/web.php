@@ -35,9 +35,9 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/acara/{acara}', [AcaraController::class, 'show'])->name('acara.show');
 // Route::get('/acara/{acara?}/absensi', [AbsensiAnggotaController::class, 'index'])->name('absensi.index');
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 Route::get('/', [FrontController::class, 'index'])->name('home');
