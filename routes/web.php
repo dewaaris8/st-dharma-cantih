@@ -35,11 +35,11 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/acara/{acara}', [AcaraController::class, 'show'])->name('acara.show');
 // Route::get('/acara/{acara?}/absensi', [AbsensiAnggotaController::class, 'index'])->name('absensi.index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
 Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/absensi', [FrontController::class, 'absensi'])->name('absensi');
 Route::get('/inventaris', [FrontController::class, 'barang'])->name('barang');
@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::middleware('can:manage categories')->group(function () {
             Route::resource('anggota', AnggotaController::class)->parameters([
