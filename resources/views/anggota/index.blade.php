@@ -14,7 +14,7 @@
         <div class="flex items-center space-x-2 w-full">
             <input type="text" name="search"
                 class="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Cari Nama, Email, atau Daerah" value="{{ request('search') }}">
+                placeholder="Cari Nama, Email, Nama Ayah, Nama Ibu, atau Daerah" value="{{ request('search') }}">
             <button type="submit"
                 class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
                 Cari
@@ -84,54 +84,33 @@
 
     <!-- Navigasi Pagination -->
     @if ($anggota->hasPages())
-    <div class="d-flex flex-column flex-md-row justify-between align-items-start align-items-md-center mt-3 px-3 py-3 bg-light gap-2">
-        {{-- Info Jumlah Anggota --}}
-        <p class="mb-0 text-muted">
-            Menampilkan {{ $anggota->firstItem() }} - {{ $anggota->lastItem() }} dari {{ $anggota->total() }} anggota
-        </p>
+        <div class="flex justify-between items-center px-6 py-4 bg-gray-100">
+            <p class="text-gray-600">
+                Menampilkan {{ $anggota->firstItem() }} - {{ $anggota->lastItem() }} dari {{ $anggota->total() }} anggota
+            </p>
 
-        {{-- Navigasi Halaman --}}
-        <nav>
-            <ul class="pagination flex-wrap mb-0">
-                {{-- Tombol Sebelumnya --}}
+            <div class="flex space-x-2">
                 @if ($anggota->onFirstPage())
-                    <li class="page-item disabled">
-                        <span class="page-link">«</span>
-                    </li>
+                    <span class="px-3 py-1 text-gray-400 bg-gray-200 rounded-md">Sebelumnya</span>
                 @else
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $anggota->previousPageUrl() }}" rel="prev">«</a>
-                    </li>
+                    <a href="{{ $anggota->previousPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Sebelumnya</a>
                 @endif
 
-                {{-- Nomor Halaman --}}
-                @foreach ($anggota->links()->elements[0] as $page => $url)
+                @foreach ($anggota->getUrlRange(1, $anggota->lastPage()) as $page => $url)
                     @if ($page == $anggota->currentPage())
-                        <li class="page-item active" aria-current="page">
-                            <span class="page-link">{{ $page }}</span>
-                        </li>
+                        <span class="px-3 py-1 bg-blue-500 text-white rounded-md">{{ $page }}</span>
                     @else
-                        <li class="page-item">
-                            <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                        </li>
+                        <a href="{{ $url }}" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300">{{ $page }}</a>
                     @endif
                 @endforeach
 
-                {{-- Tombol Selanjutnya --}}
                 @if ($anggota->hasMorePages())
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $anggota->nextPageUrl() }}" rel="next">»</a>
-                    </li>
+                    <a href="{{ $anggota->nextPageUrl() }}" class="px-3 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600">Selanjutnya</a>
                 @else
-                    <li class="page-item disabled">
-                        <span class="page-link">»</span>
-                    </li>
+                    <span class="px-3 py-1 text-gray-400 bg-gray-200 rounded-md">Selanjutnya</span>
                 @endif
-            </ul>
-        </nav>
-    </div>
-@endif
-
-
+            </div>
+        </div>
+    @endif
 </div>
 @endsection
