@@ -59,12 +59,14 @@ public function index(Request $request)
         'anggota' => $paginated,
     ]);
 }
-    public function cetakPdf()
-    {
-        $dataAnggota = Anggota::all();
-        $pdf = FacadePdf::loadView('pdf.anggota', compact('dataAnggota'));
-        return $pdf->download('data_anggota.pdf');
-    }
+public function cetakPdf()
+{
+    $dataAnggota = Anggota::all();
+    $pdf = FacadePdf::loadView('pdf.anggota', compact('dataAnggota'))
+                    ->setPaper('A4', 'landscape');
+                    
+    return $pdf->download('data_anggota.pdf');
+}
 
     public function create()
     {
