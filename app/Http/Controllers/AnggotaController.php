@@ -9,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class AnggotaController extends Controller
 {
-
+   
 
 public function index(Request $request)
 {
@@ -22,9 +22,7 @@ public function index(Request $request)
         $query->where(function ($q) use ($search) {
             $q->where('nama', 'LIKE', "%$search%")
               ->orWhere('email', 'LIKE', "%$search%")
-              ->orWhere('daerah', 'LIKE', "%$search%")
-              ->orWhere('nama_ayah', 'LIKE', "%$search%")
-              ->orWhere('nama_ibu', 'LIKE', "%$search%");
+              ->orWhere('daerah', 'LIKE', "%$search%");
         });
     }
 
@@ -63,10 +61,11 @@ public function cetakPdf()
 {
     $dataAnggota = Anggota::all();
     $pdf = FacadePdf::loadView('pdf.anggota', compact('dataAnggota'))
-                    ->setPaper('A4', 'landscape');
-                    
+               ->setPaper('a4', 'landscape');
+    
     return $pdf->download('data_anggota.pdf');
 }
+
 
     public function create()
     {
@@ -119,3 +118,4 @@ public function cetakPdf()
         return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil dihapus.');
     }
 }
+
