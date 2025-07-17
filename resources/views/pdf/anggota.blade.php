@@ -48,6 +48,7 @@
                             <th>Email</th>
                             <th>Telepon</th>
                             <th>Alamat</th>
+                            <th>Denda</th>
                             <th>Nama Ayah</th>
                             <th>Nama Ibu</th>
                         </tr>
@@ -60,6 +61,7 @@
                             <td>{{ $anggota->email }}</td>
                             <td>{{ $anggota->telepon }}</td>
                             <td>{{ $anggota->alamat }}</td>
+                            <td>Rp. {{ number_format($anggota->totalDenda(), 0, ',', '.') }}</td>
                             <td>{{ $anggota->nama_ayah }}</td>
                             <td>{{ $anggota->nama_ibu }}</td>
                         </tr>

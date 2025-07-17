@@ -33,6 +33,7 @@
                     <th>Nama Barang</th>
                     <th>Jumlah</th>
                     <th>Catatan</th>
+                    <th>Tahun Perolehan</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +44,7 @@
                     \
                     <td>{{ $barang->jumlah }}</td>
                     <td>{{ $barang->catatan }}</td>
+                    <td>{{ $barang->tahun_perolehan }}</td>
                 </tr>
                 @endforeach
             </tbody>

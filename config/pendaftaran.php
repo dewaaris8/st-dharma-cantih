@@ -1,0 +1,1 @@
+<?php return ['is_open' => false];

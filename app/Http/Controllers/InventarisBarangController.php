@@ -42,7 +42,8 @@ public function index()
         $request->validate([
             'nama_barang' => 'required|string|max:255',
             'jumlah' => 'required|integer|min:1',
-            'catatan' => 'required|string|max:255'
+            'catatan' => 'required|string|max:255',
+            'tahun_perolehan' => 'required|string|max:255'
         ]);
 
         InventarisBarang::create($request->all());

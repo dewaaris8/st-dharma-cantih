@@ -15,7 +15,6 @@ public function index(Request $request)
 {
     $search = $request->input('search');
 
-    // Ambil semua data yang cocok
     $query = Anggota::query();
 
     if ($search) {
@@ -26,17 +25,22 @@ public function index(Request $request)
         });
     }
 
+    $verified = $request->input('verified');
+
+if ($verified === '1') {
+    $query->where('is_verified', true);
+} elseif ($verified === '0') {
+    $query->where('is_verified', false);
+}
+
+
     $query->orderBy('daerah')->orderBy('nama');
 
     $allAnggota = $query->get();
 
-    // Kelompokkan berdasarkan daerah
     $grouped = $allAnggota->groupBy('daerah');
-
-    // Flatten hasil agar bisa dipaginasi
     $flattened = $grouped->flatten(1);
 
-    // Manual pagination
     $perPage = 10;
     $currentPage = LengthAwarePaginator::resolveCurrentPage();
     $currentItems = $flattened->slice(($currentPage - 1) * $perPage, $perPage)->values();
@@ -49,7 +53,6 @@ public function index(Request $request)
         ['path' => $request->url(), 'query' => $request->query()]
     );
 
-    // Group ulang item yang sudah dipaginasi
     $groupedPaginated = $currentItems->groupBy('daerah');
 
     return view('anggota.index', [
@@ -57,9 +60,10 @@ public function index(Request $request)
         'anggota' => $paginated,
     ]);
 }
+
 public function cetakPdf()
 {
-    $dataAnggota = Anggota::all();
+    $dataAnggota = Anggota::with('absensi')->get();
     $pdf = FacadePdf::loadView('pdf.anggota', compact('dataAnggota'))
                ->setPaper('a4', 'landscape');
     
@@ -111,6 +115,17 @@ public function cetakPdf()
 
         return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil diperbarui.');
     }
+
+    public function verifikasi(Anggota $anggota)
+{
+    $anggota->update([
+        'is_verified' => true,
+        'status' => 'Aktif',
+    ]);
+
+    return redirect()->route('admin.anggota.index')->with('success', 'Anggota berhasil diverifikasi.');
+}
+
 
     public function destroy(Anggota $anggota)
     {

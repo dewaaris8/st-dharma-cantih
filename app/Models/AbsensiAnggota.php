@@ -9,7 +9,8 @@ class AbsensiAnggota extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['anggota_id', 'tanggal', 'status', 'acara_id'];
+    protected $fillable = ['anggota_id', 'tanggal', 'status', 'acara_id', 'denda'];
+
 
     public function anggota()
     {

@@ -28,6 +28,7 @@
                 <li><a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a></li>
                 <li><a href='{{ route('absensi') }}'  class="hover:text-gray-300">Presensi</a></li>
                 <li><a href='{{ route('barang') }}'  class="hover:text-gray-300">Inventaris</a></li>
+                <li><a href='{{ route('pendaftaran.form') }}' class="hover:text-gray-300">Daftar</a></li>
                 <li><a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a></li>
             </ul>
         </div>
@@ -37,6 +38,7 @@
             <a href='{{ route('pengumuman') }}'  class="hover:text-gray-300">Pengumuman</a>
             <a href='{{ route('absensi') }}'  class="hover:text-gray-300">Presensi</a>
             <a href='{{ route('barang') }}'  class="hover:text-gray-300">Inventaris</a>
+            <li><a href='{{ route('pendaftaran.form') }}' class="hover:text-gray-300">Daftar</a></li>
             <a href='{{ route('login') }}'  class="hover:text-gray-300">Login</a>
         </div>
     </nav>

@@ -7,6 +7,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\InventarisBarangController;
 use App\Http\Controllers\PeminjamanController;
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -41,6 +42,11 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [FrontController::class, 'index'])->name('home');
+
+Route::get('/pendaftaran-anggota', [PendaftaranController::class, 'form'])->name('pendaftaran.form');
+Route::post('/pendaftaran-anggota', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+Route::put('/pendaftaran/toggle', [PendaftaranController::class, 'toggle'])->name('pendaftaran.toggle');
+Route::put('/admin/anggota/{anggota}/verifikasi', [AnggotaController::class, 'verifikasi'])->name('admin.anggota.verifikasi');
 Route::get('/absensi', [FrontController::class, 'absensi'])->name('absensi');
 Route::get('/inventaris', [FrontController::class, 'barang'])->name('barang');
 Route::get('/pengumuman', [FrontController::class, 'pengumuman'])->name('pengumuman');
@@ -61,6 +67,7 @@ Route::middleware('auth')->group(function () {
             Route::resource('anggota', AnggotaController::class)->parameters([
                 'anggota' => 'anggota'
             ]);
+            
             Route::resource('absensi', AbsensiAnggotaController::class);
             Route::resource('inventaris', InventarisBarangController::class)->parameters([
                 'inventaris' => 'inventaris'

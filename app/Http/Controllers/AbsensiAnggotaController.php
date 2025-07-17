@@ -41,28 +41,36 @@ class AbsensiAnggotaController extends Controller
      * Menyimpan absensi ke database.
      */
     public function store(Request $request, Acara $acara)
-    {
-        $request->validate([
-            'absensi' => 'required|array',
-            'absensi.*.anggota_id' => 'required|exists:anggotas,id',
-            'absensi.*.status' => 'required|in:Hadir,Tidak Hadir,Sakit'
-        ]);
+{
+    $request->validate([
+        'absensi' => 'required|array',
+        'absensi.*.anggota_id' => 'required|exists:anggotas,id',
+        'absensi.*.status' => 'required|in:Hadir,Tidak Hadir,Sakit'
+    ]);
 
-        foreach ($request->absensi as $data) {
-            AbsensiAnggota::updateOrCreate(
-                [
-                    'acara_id' => $acara->id,
-                    'anggota_id' => $data['anggota_id']
-                ],
-                [
-                    'tanggal' => now(),
-                    'status' => $data['status']
-                ]
-            );
+    foreach ($request->absensi as $data) {
+        $denda = 0;
+        
+        if ($data['status'] === 'Tidak Hadir') {
+            $denda = 2500; // nominal denda
         }
 
-        return redirect()->route('admin.acara.index')->with('success', 'Absensi berhasil ditambahkan.');
+        AbsensiAnggota::updateOrCreate(
+            [
+                'acara_id' => $acara->id,
+                'anggota_id' => $data['anggota_id']
+            ],
+            [
+                'tanggal' => now(),
+                'status' => $data['status'],
+                'denda' => $denda,
+            ]
+        );
     }
+
+    return redirect()->route('admin.acara.index')->with('success', 'Absensi berhasil ditambahkan.');
+}
+
 
     /**
      * Form edit absensi.

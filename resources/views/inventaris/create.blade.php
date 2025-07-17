@@ -12,7 +12,7 @@
                 @csrf
                 
                 <div class="mb-6">
-                    <label class="form-label" for="basic-default-fullname">Full Name</label>
+                    <label class="form-label" for="basic-default-fullname">Nama Barang</label>
                     <input type="text" name="nama_barang" 
                         class="form-control @error('nama_barang') is-invalid @enderror" 
                         id="basic-default-fullname" placeholder="Kursi" 
@@ -38,6 +38,17 @@
                         class="form-control @error('catatan') is-invalid @enderror"
                         placeholder="Berikan Deskripsi Kondisi Barang">{{ old('catatan') }}</textarea>
                     @error('catatan')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-6">
+                    <label class="form-label" for="basic-default-fullname">Tahun Perolehan</label>
+                    <input type="text" name="tahun_perolehan" 
+                        class="form-control @error('nama_barang') is-invalid @enderror" 
+                        id="basic-default-fullname" placeholder="Tahun Perolehan Barang" 
+                        value="{{ old('tahun_perolehan') }}" />
+                    @error('tahun_perolehan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>

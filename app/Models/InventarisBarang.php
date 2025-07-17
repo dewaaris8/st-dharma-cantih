@@ -10,7 +10,8 @@ class InventarisBarang extends Model
     use HasFactory;
 
     protected $table = 'inventaris_barangs';
-    protected $fillable = ['nama_barang', 'jumlah', 'catatan'];
+    protected $fillable = ['nama_barang', 'jumlah', 'catatan', 'tahun_perolehan'];
+
 
     public function peminjamans()
     {
