@@ -25,6 +25,7 @@
                         <th>Catatan</th>
                         <th>Sedang Dipinjam</th>
                         <th>Tahun Perolehan</th>
+                        <th>Harga Pembelian</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,6 +38,7 @@
                             <td>{{ $item->catatan }}</td>
                             <td>{{ $item->jumlahSedangDipinjam() }}</td>
                             <td>{{ $item->tahun_perolehan }}</td>
+                            <td>Rp {{ number_format($item->harga_pembelian, 0, ',', '.') }}</td>
                             <td>
                                 <a href="{{ route('admin.inventaris.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                 <form action="{{ route('admin.inventaris.destroy', $item->id) }}" method="POST" style="display:inline;">

@@ -32,6 +32,15 @@
               <label class="form-label" for="basic-default-fullname">Tahun Perolehan</label>
               <input type="text" value="{{ $inventaris->tahun_perolehan }}" name="tahun_perolehan" class="form-control" id="basic-default-fullname" placeholder="Kursi" />
             </div>
+            <div class="mb-6">
+                <label class="form-label" for="basic-default-harga">Harga Pembelian</label>
+                <input type="number" name="harga_pembelian" 
+                    class="form-control" 
+                    id="basic-default-harga" 
+                    placeholder="Contoh: 1500000" 
+                    value="{{ $inventaris->harga_pembelian }}" />
+            </div>
+
             <button type="submit" class="btn btn-primary">Send</button>
           </form>
         </div>

@@ -1,1 +1,1 @@
-<?php return ['is_open' => false];
+<?php return ['is_open' => true];

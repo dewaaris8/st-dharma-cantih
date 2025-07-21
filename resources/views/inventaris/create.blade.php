@@ -53,6 +53,18 @@
                     @enderror
                 </div>
 
+                <div class="mb-6">
+                    <label class="form-label" for="basic-default-harga">Harga Pembelian</label>
+                    <input type="number" name="harga_pembelian" 
+                        class="form-control @error('harga_pembelian') is-invalid @enderror" 
+                        id="basic-default-harga" placeholder="Contoh: 1500000" 
+                        value="{{ old('harga_pembelian') }}" />
+                    @error('harga_pembelian')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+
                 <button type="submit" class="btn btn-primary">Send</button>
             </form>
         </div>
