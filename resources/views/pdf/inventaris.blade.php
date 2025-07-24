@@ -34,6 +34,7 @@
                     <th>Jumlah</th>
                     <th>Catatan</th>
                     <th>Tahun Perolehan</th>
+                    <th>Harga Pembelian</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +46,7 @@
                     <td>{{ $barang->jumlah }}</td>
                     <td>{{ $barang->catatan }}</td>
                     <td>{{ $barang->tahun_perolehan }}</td>
+                    <td>Rp {{ number_format($barang->harga_pembelian, 0, ',', '.') }}</td>
                 </tr>
                 @endforeach
             </tbody>
